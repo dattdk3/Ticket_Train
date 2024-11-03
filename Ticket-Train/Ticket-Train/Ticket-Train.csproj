@@ -14,6 +14,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Business\IService\" />
+    <Folder Include="Business\Service\" />
+    <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 
 </Project>
