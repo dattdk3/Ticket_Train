@@ -1,13 +1,14 @@
 ﻿using Ticket_Train.Core.IRepository;
 using Ticket_Train.Data;
+using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
 {
     public class BaseRepository<T> : IGenericRepository<T> where T : class
     {
 
-        protected readonly ApplicationDbContext _context;
-        public BaseRepository(ApplicationDbContext context)
+        protected readonly TicketsContext _context;
+        public BaseRepository(TicketsContext context)
         {
             _context = context;
         }

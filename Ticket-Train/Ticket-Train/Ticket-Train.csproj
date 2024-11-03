@@ -18,8 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Business\IService\" />
-    <Folder Include="Business\Service\" />
     <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 
