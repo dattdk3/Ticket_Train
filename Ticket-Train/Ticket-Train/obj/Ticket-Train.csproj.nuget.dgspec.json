@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WEB\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {}
+    "D:\\c#Workspace\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {}
   },
   "projects": {
-    "E:\\WEB\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {
+    "D:\\c#Workspace\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WEB\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
+        "projectUniqueName": "D:\\c#Workspace\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
         "projectName": "Ticket-Train",
-        "projectPath": "E:\\WEB\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\WEB\\Ticket-Train\\Ticket-Train\\obj\\",
+        "projectPath": "D:\\c#Workspace\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "D:\\c#Workspace\\Ticket_Train\\Ticket-Train\\Ticket-Train\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -76,6 +77,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -84,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
