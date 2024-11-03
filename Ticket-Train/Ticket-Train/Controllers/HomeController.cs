@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Ticket_Train.Core.IRepository;
+using Ticket_Train.Core.Repository;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Controllers
@@ -8,13 +10,20 @@ namespace Ticket_Train.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Trainrespository trainrespository;
+
+        public HomeController(ILogger<HomeController> logger , Trainrespository _trainrespository)
         {
             _logger = logger;
+            trainrespository = _trainrespository;   
         }
 
         public IActionResult Index()
         {
+            var result = trainrespository.GetAll(1 , 2 , () =>
+            {
+                
+            })
             return View();
         }
 
