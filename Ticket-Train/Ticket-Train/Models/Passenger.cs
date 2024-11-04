@@ -12,7 +12,7 @@
         public string Surname { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string? Phone { get; set; }
-        public DateOnly BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public virtual ICollection<Reservation> Reservations { get; set; }
 

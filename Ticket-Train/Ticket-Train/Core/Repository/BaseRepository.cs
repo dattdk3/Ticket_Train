@@ -1,5 +1,4 @@
 ﻿using Ticket_Train.Core.IRepository;
-using Ticket_Train.Data;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository

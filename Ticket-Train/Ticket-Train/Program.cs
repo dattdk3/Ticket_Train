@@ -2,23 +2,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Ticket_Train.Core.IRepository;
 using Ticket_Train.Core.Repository;
-using Ticket_Train.Data;
+//using Ticket_Train.Data;
+using Ticket_Train.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("constring");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+var connectionString = builder.Configuration.GetConnectionString("Constring");
+builder.Services.AddDbContext<TicketsContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<TicketsContext>();
 
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddScoped<Itrainrespository, Trainrespository>();
+//builder.Services.AddScoped<Itrainrespository, Trainrespository>();
 
 
 builder.Services.AddControllersWithViews();

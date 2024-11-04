@@ -24,12 +24,16 @@ namespace Ticket_Train.Models
         public virtual DbSet<Station> Stations { get; set; } = null!;
         public virtual DbSet<Train> Trains { get; set; } = null!;
 
+        public virtual DbSet<User> Users { get; set; } = null!;
+
+        public virtual DbSet<Seat> Seats { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=ADMIN;Database=TicketTrain;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-B2EDHFC\\SQLEXPRESS;Database=TicketTrain;Trusted_Connection=True;");
             }
         }
 
@@ -141,7 +145,6 @@ namespace Ticket_Train.Models
 
                 entity.Property(e => e.DepartureTime).HasColumnName("departure_time");
 
-                entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.RouteId).HasColumnName("route_id");
 
@@ -207,6 +210,76 @@ namespace Ticket_Train.Models
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<Seat>(entity =>
+            {
+                entity.ToTable("seats");
+
+                entity.Property(e => e.SeatId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("seat_id");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(20)
+                    .HasColumnName("status");
+
+                entity.Property(e => e.TrainId).HasColumnName("train_id");
+
+                entity.Property(e => e.ClassId).HasColumnName("class_id");
+
+                entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
+
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(18, 2)")  // Định dạng kiểu dữ liệu decimal cho giá vé
+                    .HasColumnName("price");
+
+                // Thiết lập quan hệ
+                entity.HasOne(d => d.Train)
+                    .WithMany(p => p.Seats)
+                    .HasForeignKey(d => d.TrainId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("seat_trainFK");
+
+                entity.HasOne(d => d.Class)
+                    .WithMany()
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("seat_classFK");
+
+                entity.HasOne(d => d.Schedule)
+                    .WithMany()
+                    .HasForeignKey(d => d.ScheduleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("seat_scheduleFK");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("users");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityColumn();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("password");
+
+                entity.Property(e => e.Role)
+                    .HasDefaultValue(2) // Default role is user
+                    .HasColumnName("role");
             });
 
             OnModelCreatingPartial(modelBuilder);
