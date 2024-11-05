@@ -19,6 +19,7 @@ builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddScoped<Itrainrespository, Trainrespository>();
+builder.Services.AddScoped<IUserRepository, UserRespository>();
 
 
 builder.Services.AddControllersWithViews();
@@ -43,6 +44,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+
+
 app.UseAuthorization();
 
 app.MapControllerRoute(

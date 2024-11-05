@@ -12,7 +12,7 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    [Migration("20241103163907_InitialCreate")]
+    [Migration("20241105102204_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -78,8 +78,8 @@ namespace Ticket_Train.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PassengerId"));
 
-                    b.Property<DateOnly>("BirthDate")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2")
                         .HasColumnName("birthDate");
 
                     b.Property<string>("Email")
@@ -174,13 +174,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("class_id");
 
-                    b.Property<DateOnly>("DepartureTime")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("datetime2")
                         .HasColumnName("departure_time");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("price");
 
                     b.Property<int>("RouteId")
                         .HasColumnType("int")
@@ -199,6 +195,48 @@ namespace Ticket_Train.Migrations
                     b.HasIndex("TrainId");
 
                     b.ToTable("schedules", (string)null);
+                });
+
+            modelBuilder.Entity("Ticket_Train.Models.Seat", b =>
+                {
+                    b.Property<int>("SeatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("seat_id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"));
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int")
+                        .HasColumnName("class_id");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)")
+                        .HasColumnName("price");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int")
+                        .HasColumnName("schedule_id");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("status");
+
+                    b.Property<int>("TrainId")
+                        .HasColumnType("int")
+                        .HasColumnName("train_id");
+
+                    b.HasKey("SeatId");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.HasIndex("TrainId");
+
+                    b.ToTable("seats", (string)null);
                 });
 
             modelBuilder.Entity("Ticket_Train.Models.Station", b =>
@@ -232,6 +270,44 @@ namespace Ticket_Train.Migrations
                     b.HasKey("TrainId");
 
                     b.ToTable("train", (string)null);
+                });
+
+            modelBuilder.Entity("Ticket_Train.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("email");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("password");
+
+                    b.Property<int>("Role")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(2)
+                        .HasColumnName("role");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("ScheduleClass", b =>
@@ -310,6 +386,33 @@ namespace Ticket_Train.Migrations
                     b.Navigation("Train");
                 });
 
+            modelBuilder.Entity("Ticket_Train.Models.Seat", b =>
+                {
+                    b.HasOne("Ticket_Train.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .IsRequired()
+                        .HasConstraintName("seat_classFK");
+
+                    b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
+                        .WithMany()
+                        .HasForeignKey("ScheduleId")
+                        .IsRequired()
+                        .HasConstraintName("seat_scheduleFK");
+
+                    b.HasOne("Ticket_Train.Models.Train", "Train")
+                        .WithMany("Seats")
+                        .HasForeignKey("TrainId")
+                        .IsRequired()
+                        .HasConstraintName("seat_trainFK");
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Schedule");
+
+                    b.Navigation("Train");
+                });
+
             modelBuilder.Entity("Ticket_Train.Models.Class", b =>
                 {
                     b.Navigation("Schedules");
@@ -340,6 +443,8 @@ namespace Ticket_Train.Migrations
             modelBuilder.Entity("Ticket_Train.Models.Train", b =>
                 {
                     b.Navigation("Schedules");
+
+                    b.Navigation("Seats");
                 });
 #pragma warning restore 612, 618
         }

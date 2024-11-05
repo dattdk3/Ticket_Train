@@ -35,7 +35,7 @@ namespace Ticket_Train.Migrations
                     surname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    birthDate = table.Column<DateOnly>(type: "date", nullable: false)
+                    birthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,6 +64,22 @@ namespace Ticket_Train.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_train", x => x.train_id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "users",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    role = table.Column<int>(type: "int", nullable: false, defaultValue: 2)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_users", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,8 +114,7 @@ namespace Ticket_Train.Migrations
                     train_id = table.Column<int>(type: "int", nullable: false),
                     route_id = table.Column<int>(type: "int", nullable: false),
                     class_id = table.Column<int>(type: "int", nullable: false),
-                    departure_time = table.Column<DateOnly>(type: "date", nullable: false),
-                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    departure_time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,6 +182,38 @@ namespace Ticket_Train.Migrations
                         principalColumn: "schedule_id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "seats",
+                columns: table => new
+                {
+                    seat_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    train_id = table.Column<int>(type: "int", nullable: false),
+                    class_id = table.Column<int>(type: "int", nullable: false),
+                    schedule_id = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seats", x => x.seat_id);
+                    table.ForeignKey(
+                        name: "seat_classFK",
+                        column: x => x.class_id,
+                        principalTable: "class",
+                        principalColumn: "class_id");
+                    table.ForeignKey(
+                        name: "seat_scheduleFK",
+                        column: x => x.schedule_id,
+                        principalTable: "schedules",
+                        principalColumn: "schedule_id");
+                    table.ForeignKey(
+                        name: "seat_trainFK",
+                        column: x => x.train_id,
+                        principalTable: "train",
+                        principalColumn: "train_id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_reservations_passenger_id",
                 table: "reservations",
@@ -206,6 +253,21 @@ namespace Ticket_Train.Migrations
                 name: "IX_schedules_train_id",
                 table: "schedules",
                 column: "train_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seats_class_id",
+                table: "seats",
+                column: "class_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seats_schedule_id",
+                table: "seats",
+                column: "schedule_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seats_train_id",
+                table: "seats",
+                column: "train_id");
         }
 
         /// <inheritdoc />
@@ -216,6 +278,12 @@ namespace Ticket_Train.Migrations
 
             migrationBuilder.DropTable(
                 name: "schedule_class");
+
+            migrationBuilder.DropTable(
+                name: "seats");
+
+            migrationBuilder.DropTable(
+                name: "users");
 
             migrationBuilder.DropTable(
                 name: "passengers");

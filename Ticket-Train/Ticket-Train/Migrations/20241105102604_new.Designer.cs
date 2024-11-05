@@ -12,17 +12,18 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    [Migration("20241104084426_NewMigrationName")]
-    partial class NewMigrationName
+    [Migration("20241105102604_new")]
+    partial class @new
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.23")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ScheduleClass", b =>
                 {
@@ -49,7 +50,7 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("class_id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -75,7 +76,7 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("passenger_id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PassengerId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PassengerId"));
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2")
@@ -203,14 +204,14 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("seat_id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"));
 
                     b.Property<int>("ClassId")
                         .HasColumnType("int")
                         .HasColumnName("class_id");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18, 2)")
                         .HasColumnName("price");
 
                     b.Property<int>("ScheduleId")
@@ -278,7 +279,7 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()

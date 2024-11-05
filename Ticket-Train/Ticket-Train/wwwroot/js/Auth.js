@@ -1,22 +1,23 @@
-
-
-// Register api 
+$(document).ready(function () {
     $('#register').on('submit', function (e) {
         e.preventDefault();
 
         const userData = {
-            email: $('#registerEmail').val(),
-            password: $('#registerPassword').val(),
-            name: $('#registerName').val()
+            Email: $('#registerEmail').val(),
+            Password: $('#registerPassword').val(),
+            Name: $('#registerName').val()
         };
 
         $.ajax({
             type: 'POST',
-            url: '/Account/register',
+            url: '/Account/Register',
             contentType: 'application/json',
             data: JSON.stringify(userData),
             success: function (response) {
-                alert(response.message); // Thông báo đăng ký thành công
+                if (response.success) {
+                    alert(response.message); // Thông báo đăng ký thành công
+                    window.location.href = '/Account/login';
+                }
             },
             error: function (xhr) {
                 alert(xhr.responseJSON.message); // Thông báo lỗi đăng ký
@@ -24,27 +25,31 @@
         });
     });
 
-    // Login api 
+
+    // for login
+    console.log($('#login'));
+
     $('#login').on('submit', function (e) {
         e.preventDefault();
 
-    const loginData = {
-        email: $('#loginEmail').val(),
-    password: $('#loginPassword').val()
+        const loginModel = {
+            Email: $('#loginEmail').val(),
+            Password: $('#loginPassword').val()
         };
-
-    $.ajax({
-        type: 'POST',
-    url: '/Account/login',
-    contentType: 'application/json',
-    data: JSON.stringify(loginData),
-    success: function (response) {
-        alert(response.message); // Thông báo đăng nhập thành công
-    window.location.href = '/home/index'; // Chuyển hướng tới trang Home
+        $.ajax({
+            url: '/Account/Login',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(loginModel),
+            success: function (response) {
+                console.log("respond" + response);
+                if (response.success) {
+                    alert(response.message);
+                    window.location.href = '/home/index';
+                } else {
+                    alert(response.message);
+                }
             },
-    error: function (xhr) {
-        alert(xhr.responseJSON.message); // Thông báo lỗi đăng nhập
-            }
         });
     });
-
+});

@@ -1,9 +1,10 @@
 ﻿<link rel="stylesheet" href="~/css/Register.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="~/js/Auth.js"></script>
 
 
 
-<form asp-action="Login" method="post" class="content">
+<form id="login" method="post" class="content">
 
     <div id="reg-form" class="auth">
 
@@ -15,12 +16,12 @@
         <div class="auth__form">
             <div class="form-control" style=" border:none ;">
                 <label for="email">EMAIL<i style=" color:red">*</i></label>
-                <input name="email" type="email" required />
+                <input name="email" id="loginEmail" type="email" required />
             </div>
 
             <div class="form-control" style=" border:none ;" >
                 <label for="password">MẬT KHẨU<i style=" color:red">*</i></label>
-                <input name="password" type="password" required />
+                <input name="password" id="loginPassword" type="password" required />
             </div>
             <button class="auth_btn" id="btnReg" type="submit" >Đăng Nhập</button>
         </div>
@@ -28,7 +29,6 @@
     </div>
 
 </form>
-
 
 
 
