@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin đặt vé</title>
+    <link rel="stylesheet" href="~/css/Style.css"> <!-- Liên kết đến file CSS -->
+</head>
+<body>
+    <header>
+        <div class="logo">Đặt Vé Tàu</div>
+    </header>
+
+    <main>
+        <h2>Thông tin đặt vé</h2>
+        <div>
+            <label for="customerName">Họ và tên:</label>
+            <input type="text" id="customerName" required>
+        </div>
+        <div>
+            <label for="customerEmail">Email:</label>
+            <input type="email" id="customerEmail" required>
+        </div>
+        <div>
+            <label for="customerPhone">Số điện thoại:</label>
+            <input type="tel" id="customerPhone" required>
+        </div>
+        <div>
+            <label for="paymentMethod">Phương thức thanh toán:</label>
+            <select id="paymentMethod" required>
+                <option value="" disabled selected>Chọn phương thức</option>
+                <option value="credit-card">Thẻ tín dụng</option>
+                <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                <option value="cash">Tiền mặt</option>
+            </select>
+        </div>
+        <button id="confirmPayment">Thành toán</button>
+        <div id="summary">
+            <h3>Tổng số ghế đã chọn:</h3>
+            <p id="selectedSeatsDisplay"></p>
+            <h3>Tổng giá trị:</h3>
+            <p id="totalPrice"></p>
+        </div>
+    </main>
+
+    <script src="booking.js"></script> <!-- Liên kết đến file JavaScript -->
+</body>
+</html>

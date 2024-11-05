@@ -38,7 +38,7 @@ namespace Ticket_Train.Controllers
         public async Task<IActionResult> Login([FromBody] User loginModel)
         {
             User user = await userRepository.Authentication(loginModel.Email, loginModel.Password);
-            return user == null ? Ok(new { success = false, message = "Đăng nhập không thành công." }) : Ok(new { success = true, message = "Đăng nhập thành công." });
+            return user == null ? Ok(new { success = false, message = "Đăng nhập không thành công." }) : Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name });
         }
     }
 }
