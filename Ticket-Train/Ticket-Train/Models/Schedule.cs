@@ -12,8 +12,8 @@
         public int TrainId { get; set; }
         public int RouteId { get; set; }
         public int ClassId { get; set; }
-        public DateOnly DepartureTime { get; set; }
-        public decimal Price { get; set; }
+        public DateTime DepartureTime { get; set; }
+       
 
         public virtual Class Class { get; set; } = null!;
         public virtual Route Route { get; set; } = null!;
