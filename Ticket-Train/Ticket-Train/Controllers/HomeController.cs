@@ -10,20 +10,13 @@ namespace Ticket_Train.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly Trainrespository trainrespository;
-
-        public HomeController(ILogger<HomeController> logger , Trainrespository _trainrespository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            trainrespository = _trainrespository;   
         }
 
         public IActionResult Index()
         {
-            var result = trainrespository.GetAll(1 , 2 , () =>
-            {
-                
-            })
             return View();
         }
 
