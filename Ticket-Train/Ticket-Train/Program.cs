@@ -7,7 +7,7 @@ using Ticket_Train.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("constring");
+var connectionString = builder.Configuration.GetConnectionString("Constring");
 builder.Services.AddDbContext<TicketsContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

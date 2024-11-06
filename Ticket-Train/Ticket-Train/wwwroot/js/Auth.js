@@ -43,9 +43,11 @@ $(document).ready(function () {
             data: JSON.stringify(loginModel),
             success: function (response) {
                 console.log("respond" + response);
+                console.log(JSON.stringify(response));
+
                 if (response.success) {
                     alert(response.message);
-                    window.location.href = '/home/index';
+                    window.location.href = '/Home/index';
                 } else {
                     alert(response.message);
                 }
