@@ -9,11 +9,11 @@ namespace Ticket_Train.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserRepository userRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AccountController(IUserRepository repository)
+        public AccountController(IUnitOfWork repository)
         {
-            userRepository = repository;
+            _unitOfWork = repository;
         }
         public IActionResult Register()
         {
@@ -22,7 +22,8 @@ namespace Ticket_Train.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] User model)
         {
-            await userRepository.AddAsync(model);
+            await _unitOfWork.user.AddAsync(model);
+            await _unitOfWork.SaveAsync();
             return Ok(new { success = true, message = "Đăng kí thành công." });
         }
         public IActionResult Login()
@@ -37,7 +38,7 @@ namespace Ticket_Train.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] User loginModel)
         {
-            User user = await userRepository.Authentication(loginModel.Email, loginModel.Password);
+            User user = await _unitOfWork.user.Authentication(loginModel.Email, loginModel.Password);
             return user == null ? Ok(new { success = false, message = "Đăng nhập không thành công." }) : Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name });
         }
     }
