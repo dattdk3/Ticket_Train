@@ -20,6 +20,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddScoped<Itrainrespository, Trainrespository>();
 builder.Services.AddScoped<IUserRepository, UserRespository>();
+builder.Services.AddScoped<IStationRepository, StationRepository>();
 
 
 builder.Services.AddControllersWithViews();
