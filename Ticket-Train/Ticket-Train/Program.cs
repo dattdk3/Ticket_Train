@@ -18,9 +18,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<Itrainrespository, Trainrespository>();
+builder.Services.AddScoped<ITrainRepository, TrainRepository>();
 builder.Services.AddScoped<IUserRepository, UserRespository>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
+builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
+builder.Services.AddScoped<IRouteRepository, RouteRepository>();
+
 
 
 builder.Services.AddControllersWithViews();
