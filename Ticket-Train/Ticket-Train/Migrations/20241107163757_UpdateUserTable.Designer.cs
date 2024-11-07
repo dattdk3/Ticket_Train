@@ -12,7 +12,7 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    [Migration("20241105145755_UpdateUserTable")]
+    [Migration("20241107163757_UpdateUserTable")]
     partial class UpdateUserTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,50 +23,6 @@ namespace Ticket_Train.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("ScheduleClass", b =>
-                {
-                    b.Property<int>("ScheduleId")
-                        .HasColumnType("int")
-                        .HasColumnName("schedule_id");
-
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int")
-                        .HasColumnName("class_id");
-
-                    b.HasKey("ScheduleId", "ClassId")
-                        .HasName("schedule_class_PK");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("schedule_class", (string)null);
-                });
-
-            modelBuilder.Entity("Ticket_Train.Models.Class", b =>
-                {
-                    b.Property<int>("ClassId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("class_id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassId"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("description");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)")
-                        .HasColumnName("name");
-
-                    b.HasKey("ClassId");
-
-                    b.ToTable("class", (string)null);
-                });
 
             modelBuilder.Entity("Ticket_Train.Models.Passenger", b =>
                 {
@@ -169,10 +125,6 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("schedule_id");
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int")
-                        .HasColumnName("class_id");
-
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime2")
                         .HasColumnName("departure_time");
@@ -186,8 +138,6 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     b.HasKey("ScheduleId");
-
-                    b.HasIndex("ClassId");
 
                     b.HasIndex("RouteId");
 
@@ -204,10 +154,6 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("seat_id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
-
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int")
-                        .HasColumnName("class_id");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")
@@ -228,8 +174,6 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     b.HasKey("SeatId");
-
-                    b.HasIndex("ClassId");
 
                     b.HasIndex("ScheduleId");
 
@@ -309,21 +253,6 @@ namespace Ticket_Train.Migrations
                     b.ToTable("users", (string)null);
                 });
 
-            modelBuilder.Entity("ScheduleClass", b =>
-                {
-                    b.HasOne("Ticket_Train.Models.Class", null)
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .IsRequired()
-                        .HasConstraintName("class_FK");
-
-                    b.HasOne("Ticket_Train.Models.Schedule", null)
-                        .WithMany()
-                        .HasForeignKey("ScheduleId")
-                        .IsRequired()
-                        .HasConstraintName("schedule_FK");
-                });
-
             modelBuilder.Entity("Ticket_Train.Models.Reservation", b =>
                 {
                     b.HasOne("Ticket_Train.Models.Passenger", "Passenger")
@@ -360,12 +289,6 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Schedule", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Class", "Class")
-                        .WithMany("Schedules")
-                        .HasForeignKey("ClassId")
-                        .IsRequired()
-                        .HasConstraintName("schedule_classFK");
-
                     b.HasOne("Ticket_Train.Models.Route", "Route")
                         .WithMany("Schedules")
                         .HasForeignKey("RouteId")
@@ -378,8 +301,6 @@ namespace Ticket_Train.Migrations
                         .IsRequired()
                         .HasConstraintName("schedules_trainFK");
 
-                    b.Navigation("Class");
-
                     b.Navigation("Route");
 
                     b.Navigation("Train");
@@ -387,12 +308,6 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Seat", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .IsRequired()
-                        .HasConstraintName("seat_classFK");
-
                     b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
                         .WithMany()
                         .HasForeignKey("ScheduleId")
@@ -405,16 +320,9 @@ namespace Ticket_Train.Migrations
                         .IsRequired()
                         .HasConstraintName("seat_trainFK");
 
-                    b.Navigation("Class");
-
                     b.Navigation("Schedule");
 
                     b.Navigation("Train");
-                });
-
-            modelBuilder.Entity("Ticket_Train.Models.Class", b =>
-                {
-                    b.Navigation("Schedules");
                 });
 
             modelBuilder.Entity("Ticket_Train.Models.Passenger", b =>

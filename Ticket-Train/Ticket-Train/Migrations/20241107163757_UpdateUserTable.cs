@@ -10,20 +10,6 @@ namespace Ticket_Train.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "class",
-                columns: table => new
-                {
-                    class_id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_class", x => x.class_id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "passengers",
                 columns: table => new
                 {
@@ -111,17 +97,11 @@ namespace Ticket_Train.Migrations
                     schedule_id = table.Column<int>(type: "int", nullable: false),
                     train_id = table.Column<int>(type: "int", nullable: false),
                     route_id = table.Column<int>(type: "int", nullable: false),
-                    class_id = table.Column<int>(type: "int", nullable: false),
                     departure_time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_schedules", x => x.schedule_id);
-                    table.ForeignKey(
-                        name: "schedule_classFK",
-                        column: x => x.class_id,
-                        principalTable: "class",
-                        principalColumn: "class_id");
                     table.ForeignKey(
                         name: "schedules_routeFK",
                         column: x => x.route_id,
@@ -159,35 +139,12 @@ namespace Ticket_Train.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "schedule_class",
-                columns: table => new
-                {
-                    schedule_id = table.Column<int>(type: "int", nullable: false),
-                    class_id = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("schedule_class_PK", x => new { x.schedule_id, x.class_id });
-                    table.ForeignKey(
-                        name: "class_FK",
-                        column: x => x.class_id,
-                        principalTable: "class",
-                        principalColumn: "class_id");
-                    table.ForeignKey(
-                        name: "schedule_FK",
-                        column: x => x.schedule_id,
-                        principalTable: "schedules",
-                        principalColumn: "schedule_id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "seats",
                 columns: table => new
                 {
                     seat_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     train_id = table.Column<int>(type: "int", nullable: false),
-                    class_id = table.Column<int>(type: "int", nullable: false),
                     schedule_id = table.Column<int>(type: "int", nullable: false),
                     status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
@@ -195,11 +152,6 @@ namespace Ticket_Train.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_seats", x => x.seat_id);
-                    table.ForeignKey(
-                        name: "seat_classFK",
-                        column: x => x.class_id,
-                        principalTable: "class",
-                        principalColumn: "class_id");
                     table.ForeignKey(
                         name: "seat_scheduleFK",
                         column: x => x.schedule_id,
@@ -233,16 +185,6 @@ namespace Ticket_Train.Migrations
                 column: "origin_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_schedule_class_class_id",
-                table: "schedule_class",
-                column: "class_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_schedules_class_id",
-                table: "schedules",
-                column: "class_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_schedules_route_id",
                 table: "schedules",
                 column: "route_id");
@@ -251,11 +193,6 @@ namespace Ticket_Train.Migrations
                 name: "IX_schedules_train_id",
                 table: "schedules",
                 column: "train_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_seats_class_id",
-                table: "seats",
-                column: "class_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_seats_schedule_id",
@@ -274,9 +211,6 @@ namespace Ticket_Train.Migrations
                 name: "reservations");
 
             migrationBuilder.DropTable(
-                name: "schedule_class");
-
-            migrationBuilder.DropTable(
                 name: "seats");
 
             migrationBuilder.DropTable(
@@ -287,9 +221,6 @@ namespace Ticket_Train.Migrations
 
             migrationBuilder.DropTable(
                 name: "schedules");
-
-            migrationBuilder.DropTable(
-                name: "class");
 
             migrationBuilder.DropTable(
                 name: "routes");
