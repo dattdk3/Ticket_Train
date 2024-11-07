@@ -15,6 +15,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<TicketsContext>();
 
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Th?i gian h?t h?n session
+    options.Cookie.HttpOnly = true; // B?o v? cookie kh?i JavaScript
+    options.Cookie.IsEssential = true; // ??m b?o cookie ???c g?i ngay c? trong các yêu c?u không xác th?c
+});
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -49,6 +56,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 
+app.UseSession();
 
 app.UseAuthorization();
 
