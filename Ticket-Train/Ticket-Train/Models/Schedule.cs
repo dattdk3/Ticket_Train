@@ -5,10 +5,12 @@
         public Schedule()
         {
             Reservations = new HashSet<Reservation>();
+
         }
 
         public int ScheduleId { get; set; }
-
+        public int TrainId { get; set; }
+        public int RouteId { get; set; }
         public DateTime DepartureTime { get; set; }
        
 

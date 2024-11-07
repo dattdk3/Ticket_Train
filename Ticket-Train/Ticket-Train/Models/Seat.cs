@@ -11,6 +11,7 @@
             public decimal Price { get; set; }
             // Navigation properties
             public Train Train { get; set; }
+
             public Schedule Schedule { get; set; }
 
 

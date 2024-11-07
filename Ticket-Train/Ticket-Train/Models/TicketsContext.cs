@@ -69,24 +69,24 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("reservations");
 
-                entity.Property(e => e.Passenger.PassengerId)
+                entity.Property(e => e.PassengerId)
                    .HasColumnName("passenger_id")
                    .UseIdentityColumn();
 
                 entity.Property(e => e.NumTickets).HasColumnName("num_tickets");
 
-                entity.Property(e => e.Passenger.PassengerId).HasColumnName("passenger_id");
+                entity.Property(e => e.PassengerId).HasColumnName("passenger_id");
 
-                entity.Property(e => e.Schedule.ScheduleId).HasColumnName("schedule_id");
+                entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
 
                 entity.HasOne(d => d.Passenger)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.Passenger.PassengerId)
+                    .HasForeignKey(d => d.PassengerId)
                     .HasConstraintName("reservation_passengerFK");
 
                 entity.HasOne(d => d.Schedule)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.Schedule.ScheduleId)
+                    .HasForeignKey(d => d.ScheduleId)
                     .HasConstraintName("reservation_scheduleFK");
             });
 
@@ -94,8 +94,8 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("routes");
 
-                entity.Property(e => e.RouteId)
-                    .HasColumnName("route_id")
+                entity.Property(e => e.ReservationId)
+                    .HasColumnName("reservation_id")
                     .UseIdentityColumn();
                 entity.Property(e => e.DestinationId).HasColumnName("destination_id");
                 entity.Property(e => e.Distance).HasColumnName("distance");
@@ -119,26 +119,26 @@ namespace Ticket_Train.Models
                 entity.ToTable("schedules");
 
                 entity.Property(e => e.ScheduleId)
-                    .HasColumnName("schedule_id")
-                    .UseIdentityColumn();
+                    .ValueGeneratedNever()
+                    .HasColumnName("schedule_id");
 
 
                 entity.Property(e => e.DepartureTime).HasColumnName("departure_time");
 
 
-                entity.Property(e => e.Route.RouteId).HasColumnName("route_id");
+                entity.Property(e => e.RouteId).HasColumnName("route_id");
 
-                entity.Property(e => e.Train.TrainId).HasColumnName("train_id");
+                entity.Property(e => e.TrainId).HasColumnName("train_id");
 
                 entity.HasOne(d => d.Route)
                     .WithMany(p => p.Schedules)
-                    .HasForeignKey(d => d.Route.RouteId)
+                    .HasForeignKey(d => d.RouteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("schedules_routeFK");
 
                 entity.HasOne(d => d.Train)
                     .WithMany(p => p.Schedules)
-                    .HasForeignKey(d => d.Train.TrainId)
+                    .HasForeignKey(d => d.TrainId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("schedules_trainFK");
 
@@ -149,8 +149,8 @@ namespace Ticket_Train.Models
                 entity.ToTable("stations");
 
                 entity.Property(e => e.StationId)
-                    .HasColumnName("station_id")
-                    .UseIdentityColumn();
+                    .ValueGeneratedNever()
+                    .HasColumnName("station_id");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -175,8 +175,8 @@ namespace Ticket_Train.Models
                 entity.ToTable("seats");
 
                 entity.Property(e => e.SeatId)
-                    .HasColumnName("seat_id")
-                    .UseIdentityColumn();
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("seat_id");
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
