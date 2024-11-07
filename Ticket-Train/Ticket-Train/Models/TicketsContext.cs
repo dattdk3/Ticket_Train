@@ -69,24 +69,24 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("reservations");
 
-                entity.Property(e => e.ReservationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("reservation_id");
+                entity.Property(e => e.Passenger.PassengerId)
+                   .HasColumnName("passenger_id")
+                   .UseIdentityColumn();
 
                 entity.Property(e => e.NumTickets).HasColumnName("num_tickets");
 
-                entity.Property(e => e.PassengerId).HasColumnName("passenger_id");
+                entity.Property(e => e.Passenger.PassengerId).HasColumnName("passenger_id");
 
-                entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
+                entity.Property(e => e.Schedule.ScheduleId).HasColumnName("schedule_id");
 
                 entity.HasOne(d => d.Passenger)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.PassengerId)
+                    .HasForeignKey(d => d.Passenger.PassengerId)
                     .HasConstraintName("reservation_passengerFK");
 
                 entity.HasOne(d => d.Schedule)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.ScheduleId)
+                    .HasForeignKey(d => d.Schedule.ScheduleId)
                     .HasConstraintName("reservation_scheduleFK");
             });
 
@@ -95,24 +95,23 @@ namespace Ticket_Train.Models
                 entity.ToTable("routes");
 
                 entity.Property(e => e.RouteId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("route_id");
-
+                    .HasColumnName("route_id")
+                    .UseIdentityColumn();
                 entity.Property(e => e.DestinationId).HasColumnName("destination_id");
-
                 entity.Property(e => e.Distance).HasColumnName("distance");
-
                 entity.Property(e => e.OriginId).HasColumnName("origin_id");
 
-                entity.HasOne(d => d.Destination)
-                    .WithMany(p => p.RouteDestinations)
-                    .HasForeignKey(d => d.DestinationId)
-                    .HasConstraintName("routes_destionationFK");
-
+                // Thiết lập khóa ngoại từ `origin_id` đến `station_id`
                 entity.HasOne(d => d.Origin)
                     .WithMany(p => p.RouteOrigins)
                     .HasForeignKey(d => d.OriginId)
                     .HasConstraintName("routes_originFK");
+
+                // Thiết lập khóa ngoại từ `destination_id` đến `station_id`
+                entity.HasOne(d => d.Destination)
+                    .WithMany(p => p.RouteDestinations)
+                    .HasForeignKey(d => d.DestinationId)
+                    .HasConstraintName("routes_destinationFK");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
@@ -120,26 +119,26 @@ namespace Ticket_Train.Models
                 entity.ToTable("schedules");
 
                 entity.Property(e => e.ScheduleId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("schedule_id");
+                    .HasColumnName("schedule_id")
+                    .UseIdentityColumn();
 
 
                 entity.Property(e => e.DepartureTime).HasColumnName("departure_time");
 
 
-                entity.Property(e => e.RouteId).HasColumnName("route_id");
+                entity.Property(e => e.Route.RouteId).HasColumnName("route_id");
 
-                entity.Property(e => e.TrainId).HasColumnName("train_id");
+                entity.Property(e => e.Train.TrainId).HasColumnName("train_id");
 
                 entity.HasOne(d => d.Route)
                     .WithMany(p => p.Schedules)
-                    .HasForeignKey(d => d.RouteId)
+                    .HasForeignKey(d => d.Route.RouteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("schedules_routeFK");
 
                 entity.HasOne(d => d.Train)
                     .WithMany(p => p.Schedules)
-                    .HasForeignKey(d => d.TrainId)
+                    .HasForeignKey(d => d.Train.TrainId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("schedules_trainFK");
 
@@ -150,8 +149,8 @@ namespace Ticket_Train.Models
                 entity.ToTable("stations");
 
                 entity.Property(e => e.StationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("station_id");
+                    .HasColumnName("station_id")
+                    .UseIdentityColumn();
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -163,8 +162,8 @@ namespace Ticket_Train.Models
                 entity.ToTable("train");
 
                 entity.Property(e => e.TrainId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("train_id");
+                .HasColumnName("train_id") 
+                .UseIdentityColumn();
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -176,8 +175,8 @@ namespace Ticket_Train.Models
                 entity.ToTable("seats");
 
                 entity.Property(e => e.SeatId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("seat_id");
+                    .HasColumnName("seat_id")
+                    .UseIdentityColumn();
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
