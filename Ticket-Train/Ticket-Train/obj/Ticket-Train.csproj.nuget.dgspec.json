@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {}
+    "D:\\video\\New folder\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {}
   },
   "projects": {
-    "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {
+    "D:\\video\\New folder\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
+        "projectUniqueName": "D:\\video\\New folder\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
         "projectName": "Ticket-Train",
-        "projectPath": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
+        "projectPath": "D:\\video\\New folder\\Ticket_Train\\Ticket-Train\\Ticket-Train\\Ticket-Train.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\obj\\",
+        "outputPath": "D:\\video\\New folder\\Ticket_Train\\Ticket-Train\\Ticket-Train\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -16,7 +16,6 @@ namespace Ticket_Train.Models
         {
         }
 
-        public virtual DbSet<Class> Classes { get; set; } = null!;
         public virtual DbSet<Passenger> Passengers { get; set; } = null!;
         public virtual DbSet<Reservation> Reservations { get; set; } = null!;
         public virtual DbSet<Route> Routes { get; set; } = null!;
@@ -33,29 +32,12 @@ namespace Ticket_Train.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=ADMIN;Database=TicketTrain;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=localhost,1433; Database=Ticket_Train;User Id=sa;Password=anhchien2003;TrustServerCertificate=true");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Class>(entity =>
-            {
-                entity.ToTable("class");
-
-                entity.Property(e => e.ClassId)
-                    .HasColumnName("class_id")
-                    .UseIdentityColumn();
-
-                entity.Property(e => e.Description)
-                    .HasMaxLength(50)
-                    .HasColumnName("description");
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(25)
-                    .HasColumnName("name");
-            });
-
             modelBuilder.Entity<Passenger>(entity =>
             {
                 entity.ToTable("passengers");
@@ -87,9 +69,10 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("reservations");
 
+                entity.HasKey(e => e.ReservationId);
+
                 entity.Property(e => e.ReservationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("reservation_id");
+                   .HasColumnName("reservation_Id").UseIdentityColumn();
 
                 entity.Property(e => e.NumTickets).HasColumnName("num_tickets");
 
@@ -111,37 +94,36 @@ namespace Ticket_Train.Models
             modelBuilder.Entity<Route>(entity =>
             {
                 entity.ToTable("routes");
-
+                entity.HasKey(o => o.RouteId);
                 entity.Property(e => e.RouteId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("route_id");
-
+                    .HasColumnName("route_id")
+                    .UseIdentityColumn();
                 entity.Property(e => e.DestinationId).HasColumnName("destination_id");
-
                 entity.Property(e => e.Distance).HasColumnName("distance");
-
                 entity.Property(e => e.OriginId).HasColumnName("origin_id");
 
-                entity.HasOne(d => d.Destination)
-                    .WithMany(p => p.RouteDestinations)
-                    .HasForeignKey(d => d.DestinationId)
-                    .HasConstraintName("routes_destionationFK");
-
+                // Thiết lập khóa ngoại từ `origin_id` đến `station_id`
                 entity.HasOne(d => d.Origin)
                     .WithMany(p => p.RouteOrigins)
                     .HasForeignKey(d => d.OriginId)
                     .HasConstraintName("routes_originFK");
+
+                // Thiết lập khóa ngoại từ `destination_id` đến `station_id`
+                entity.HasOne(d => d.Destination)
+                    .WithMany(p => p.RouteDestinations)
+                    .HasForeignKey(d => d.DestinationId)
+                    .HasConstraintName("routes_destinationFK");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
             {
                 entity.ToTable("schedules");
 
-                entity.Property(e => e.ScheduleId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("schedule_id");
+                entity.HasKey(o => o.ScheduleId);
 
-                entity.Property(e => e.ClassId).HasColumnName("class_id");
+                entity.Property(e => e.ScheduleId)
+                    .HasColumnName("schedule_id").UseIdentityColumn(); ;
+
 
                 entity.Property(e => e.DepartureTime).HasColumnName("departure_time");
 
@@ -149,12 +131,6 @@ namespace Ticket_Train.Models
                 entity.Property(e => e.RouteId).HasColumnName("route_id");
 
                 entity.Property(e => e.TrainId).HasColumnName("train_id");
-
-                entity.HasOne(d => d.Class)
-                    .WithMany(p => p.Schedules)
-                    .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("schedule_classFK");
 
                 entity.HasOne(d => d.Route)
                     .WithMany(p => p.Schedules)
@@ -168,31 +144,17 @@ namespace Ticket_Train.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("schedules_trainFK");
 
-                entity.HasMany(d => d.Classes)
-                    .WithMany(p => p.SchedulesNavigation)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "ScheduleClass",
-                        l => l.HasOne<Class>().WithMany().HasForeignKey("ClassId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("class_FK"),
-                        r => r.HasOne<Schedule>().WithMany().HasForeignKey("ScheduleId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("schedule_FK"),
-                        j =>
-                        {
-                            j.HasKey("ScheduleId", "ClassId").HasName("schedule_class_PK");
-
-                            j.ToTable("schedule_class");
-
-                            j.IndexerProperty<int>("ScheduleId").HasColumnName("schedule_id");
-
-                            j.IndexerProperty<int>("ClassId").HasColumnName("class_id");
-                        });
             });
 
             modelBuilder.Entity<Station>(entity =>
             {
                 entity.ToTable("stations");
 
+                entity.HasKey(o => o.StationId);
+
                 entity.Property(e => e.StationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("station_id");
+                    .HasColumnName("station_id")
+                    .UseIdentityColumn(); ;
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -203,9 +165,11 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("train");
 
+                entity.HasKey(o => o.TrainId);
+
                 entity.Property(e => e.TrainId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("train_id");
+                .HasColumnName("train_id")
+                .UseIdentityColumn();
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -216,9 +180,11 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("seats");
 
+                entity.HasKey(o => o.SeatId);
+
                 entity.Property(e => e.SeatId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("seat_id");
+                    .HasColumnName("seat_id")
+                    .UseIdentityColumn();
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
@@ -226,7 +192,6 @@ namespace Ticket_Train.Models
 
                 entity.Property(e => e.TrainId).HasColumnName("train_id");
 
-                entity.Property(e => e.ClassId).HasColumnName("class_id");
 
                 entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
 
@@ -241,11 +206,6 @@ namespace Ticket_Train.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("seat_trainFK");
 
-                entity.HasOne(d => d.Class)
-                    .WithMany()
-                    .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("seat_classFK");
 
                 entity.HasOne(d => d.Schedule)
                     .WithMany()
