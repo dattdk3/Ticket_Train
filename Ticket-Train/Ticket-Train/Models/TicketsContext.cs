@@ -69,9 +69,10 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("reservations");
 
-                entity.Property(e => e.PassengerId)
-                   .HasColumnName("passenger_id")
-                   .UseIdentityColumn();
+                entity.HasKey(e => e.ReservationId);
+
+                entity.Property(e => e.ReservationId)
+                   .HasColumnName("reservation_Id").UseIdentityColumn();
 
                 entity.Property(e => e.NumTickets).HasColumnName("num_tickets");
 
@@ -93,9 +94,9 @@ namespace Ticket_Train.Models
             modelBuilder.Entity<Route>(entity =>
             {
                 entity.ToTable("routes");
-
-                entity.Property(e => e.ReservationId)
-                    .HasColumnName("reservation_id")
+                entity.HasKey(o => o.RouteId);
+                entity.Property(e => e.RouteId)
+                    .HasColumnName("route_id")
                     .UseIdentityColumn();
                 entity.Property(e => e.DestinationId).HasColumnName("destination_id");
                 entity.Property(e => e.Distance).HasColumnName("distance");
@@ -118,9 +119,10 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("schedules");
 
+                entity.HasKey(o => o.ScheduleId);
+
                 entity.Property(e => e.ScheduleId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("schedule_id");
+                    .HasColumnName("schedule_id").UseIdentityColumn(); ;
 
 
                 entity.Property(e => e.DepartureTime).HasColumnName("departure_time");
@@ -148,9 +150,11 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("stations");
 
+                entity.HasKey(o => o.StationId);
+
                 entity.Property(e => e.StationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("station_id");
+                    .HasColumnName("station_id")
+                    .UseIdentityColumn(); ;
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
@@ -161,8 +165,10 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("train");
 
+                entity.HasKey(o => o.TrainId);
+
                 entity.Property(e => e.TrainId)
-                .HasColumnName("train_id") 
+                .HasColumnName("train_id")
                 .UseIdentityColumn();
 
                 entity.Property(e => e.Name)
@@ -174,9 +180,11 @@ namespace Ticket_Train.Models
             {
                 entity.ToTable("seats");
 
+                entity.HasKey(o => o.SeatId);
+
                 entity.Property(e => e.SeatId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("seat_id");
+                    .HasColumnName("seat_id")
+                    .UseIdentityColumn();
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(20)
