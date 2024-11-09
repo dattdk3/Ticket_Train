@@ -10,6 +10,7 @@
         public int TrainId { get; set; }
         public string Name { get; set; } = null!;
 
+        public bool? IsActive { get; set; } = true;
         // Danh sách ghế liên quan đến tàu này
         public List<Seat> Seats { get; set; }
 

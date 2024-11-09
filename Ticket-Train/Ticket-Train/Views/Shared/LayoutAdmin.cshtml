@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quản lý chi tiêu </title>
+    <link rel="stylesheet" href="/styles/mg_Seat.css">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .fix {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+
+        header {
+            background-color: #2171c1;
+            padding: 15px 30px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+        }
+
+        .title p {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .taikhoan {
+            position: absolute;
+            right: 20px;
+            /* Điều chỉnh khoảng cách từ bên phải nếu cần */
+            top: 15px;
+            /* Điều chỉnh khoảng cách từ trên nếu cần */
+        }
+
+        .account {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn_bell:hover,
+        .account:hover {
+            background-color: #49b7f7;
+        }
+
+        .img-gh,
+        .img-acc {
+            width: 20px;
+            height: 20px;
+        }
+
+        .container_body {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .col_left {
+            background-color: #3981c8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar {
+            list-style-type: none;
+        }
+
+        .sidebar li {
+            padding: 15px;
+            background-color: #2171c1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar li:hover {
+            background-color: #49b7f7;
+        }
+
+        .col_right {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .first_row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #3388de;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .first_row h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .btn_add-User {
+            background-color: #49d1f7;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn_add-User:hover {
+            background-color: #3388de;
+        }
+
+        .second_row {
+            background-color: #f1f7ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input[type="date"],
+        input[type="text"],
+        select {
+            padding: 8px 12px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        button[type="text"] {
+            background-color: #49b7f7;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button[type="text"]:hover {
+            background-color: #3388de;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #3388de;
+            color: white;
+        }
+
+        .Task_item2 button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .Task_item2 button:hover {
+            background-color: #49b7f7;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #3388de;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #49b7f7;
+        }
+    </style>
+</head>
+
+<body onload="getSpending()">
+    <div class="fix">
+        <header class="header">
+            <div class="title">
+                <p>TRAIN.VN</p>
+            </div>
+            <div class="taikhoan">
+                <button class="account" onClick="clearLocalStorage()">
+                    <a href=""><img class="img-acc" src="/icons/icon_account.png" /></a>
+                </button>
+                <div>
+                    <h6 id="acount_name"></h6>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Fomat-side  -->
+        <div class="container_body">
+
+            <div class="col_left">
+                <ul class="sidebar">
+                    <li class="list-item">
+                        <a href="/manage_RevenueAndExpenditure/htmls/mg_Revenue.html">
+                            Manage
+                            Schedule
+                        </a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Train</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Station</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Passenger</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage User</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col_right">
+
+                <div class="first_row">
+                    <div class="title_r">
+                        <h1>Manage Schedule</h1>
+                    </div>
+
+                    <div class="btn_add-u">
+                        <button class="btn_add-User"><a href="/admin_Ticket_Train/add_Seat.html">+Tạo mới</a></button>
+                    </div>
+                </div>
+
+                <div class="second_row">
+                    <div style="margin-bottom: 30px;">
+
+                        Ngày tạo <input type="date" id="filter_date" name="create_date">
+                        <!-- <button type="text" id="create_person" name="create_person">  -->
+                        Người tạo
+                        <input type="text" id="filter_voter">
+
+
+                        Trạng Thái
+                        <select id="list_status">
+
+                            <option value="">---- ----</option>
+                            <option value="Chấp Thuận">Chấp thuận</option>
+                            <option value="Chờ duyệt">Chờ duyệt</option>
+                            <option value="Từ chối">Từ chối</option>
+                        </select>
+
+                        <button type="text" id="filter" onClick="performFilter()" name="filter">
+                            Lọc
+
+                        </button>
+
+
+                        <button style="float:right; margin-right:0px " type="text" id="sort" name="sort">
+                            <select id="list_sort" onchange="performSort()">
+                                <option value="">Sắp xếp</option>
+                                <option value="dateCreate ASC">Ngày cũ -> mới</option>
+                                <option value="dateCreate DESC">Ngày mới -> cũ </option>
+                                <option value="value ASC">Giá trị Thấp -> Cao</option>
+                                <option value="value DESC">Giá trị Cao -> Thấp</option>
+                            </select>
+                        </button>
+
+                    </div>
+
+                    @RenderBody()
+
+                    <!-- Pagination buttons -->
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="container_footer"></footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

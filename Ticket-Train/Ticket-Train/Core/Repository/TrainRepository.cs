@@ -9,11 +9,27 @@ namespace Ticket_Train.Core.Repository
     {
 
         public TrainRepository(TicketsContext ticketsContext) : base(ticketsContext) { }
-        public async Task<List<Train>> GetAll(int pagesize, int index , ICallback.CallFunc callback = null)
+
+        public Task<List<Train>> GetListTrain(int offset, int count, out int totalcount)
         {
-            List<Train> list = await _context.Trains.ToListAsync();
-            if (callback != null) callback();
-            return list;
+            totalcount = _context.Trains.Count();
+            return _context.Trains
+                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
+        }
+
+        //public async Task<List<Train>> GetAll(int pagesize, int index , ICallback.CallFunc callback = null)
+        //{
+        //    List<Train> list = await _context.Trains.ToListAsync();
+        //    if (callback != null) callback();
+        //    return list;
+        //}
+
+
+        public async Task<Train> GetWithid(int id)
+        {
+            Train train = await _context.Trains.
+                                       FirstOrDefaultAsync(o => o.TrainId == id);
+            return train;
         }
     }
 }
