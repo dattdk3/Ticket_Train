@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\js\\SeatSelection.js"
     },
     {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Station.js",
+      "PackagePath": "staticwebassets\\js\\admin\\Station.js"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Train.js",
+      "PackagePath": "staticwebassets\\js\\admin\\Train.js"
+    },
+    {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -119,6 +127,22 @@
     {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
     },
     {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",

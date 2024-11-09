@@ -1,20 +1,20 @@
-$(document).ready(function () {
-    $('#stationform').on('submit', function (e) {
+﻿$(document).ready(function () {
+    $('#trainform').on('submit', function (e) {
         e.preventDefault();
 
         const data = {
-            Name: $('#StationName').val()
+            Name: $('#TrainName').val()
         };
 
         $.ajax({
             type: 'POST',
-            url: '/Station/CreateStation',
+            url: '/Train/CreateTrain',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (response) {
                 if (response.success) {
                     alert(response.message);
-                    window.location.href = '/Station/ShowView';
+                    window.location.href = '/Train/ShowView';
                 }
             },
             error: function (xhr) {
@@ -22,25 +22,23 @@ $(document).ready(function () {
             }
         });
     });
-
-
     $('#updateForm').submit(function (event) {
         event.preventDefault();
 
-        var stationId = $('#StationId').val();
-        var updatedName = $('#UpdateStationName').val();
+        var stationId = $('#TrainId').val();
+        var updatedName = $('#UpdateTrainName').val();
 
         var data = {
-            StationId: stationId,
+            TrainId: TrainId,
             Name: updatedName
         }
         $.ajax({
-            url: `/Station/EditStation`,
+            url: `/Train/EditTrain`,
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (response) {
-                alert("Cập nhật trạm thành công!");
+                alert("Cập nhật tàu thành công!");
                 location.reload();
             },
             error: function () {
@@ -51,17 +49,17 @@ $(document).ready(function () {
 
 });
 
-function editStation(stationId) {
+function editTrain(trainId) {
     // Gọi API để lấy thông tin trạm
     $.ajax({
-        url: `/Station/ShoweditForm/${stationId}`, // Đường dẫn API cho chi tiết trạm
+        url: `/Train/ShoweditForm/${trainId}`, // Đường dẫn API cho chi tiết trạm
         type: 'GET',
         success: function (data) {
 
             console.log(data);
 
-            $('#StationId').val(data.data.stationId);
-            $('#UpdateStationName').val(data.data.name);
+            $('#TrainId').val(data.data.trainId);
+            $('#UpdateTrainName').val(data.data.name);
             $('#btnUpdate').prop('disabled', false);
         },
         error: function () {
@@ -70,10 +68,10 @@ function editStation(stationId) {
     });
 }
 
-function deleteStation(stationId) {
+function deleteTrain(stationId) {
     // Gọi API để lấy thông tin trạm
     $.ajax({
-        url: `/Station/delete/${stationId}`, // Đường dẫn API cho chi tiết trạm
+        url: `/Train/delete/${stationId}`, // Đường dẫn API cho chi tiết trạm
         type: 'PUT',
         success: function (response) {
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ticket_Train.Migrations
 {
-    public partial class updatedb : Migration
+    public partial class YourMigrationName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,8 @@ namespace Ticket_Train.Migrations
                 {
                     train_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {

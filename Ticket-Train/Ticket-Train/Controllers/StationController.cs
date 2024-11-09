@@ -2,7 +2,7 @@
 using Ticket_Train.Core.IRepository;
 using Ticket_Train.Core.Repository;
 using Ticket_Train.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+//using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Ticket_Train.Controllers
 {

@@ -12,8 +12,8 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    [Migration("20241108162920_updatedb")]
-    partial class updatedb
+    [Migration("20241109063354_YourMigrationName")]
+    partial class YourMigrationName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,6 +221,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainId"), 1L, 1);
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
