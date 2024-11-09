@@ -49,6 +49,18 @@
       "PackagePath": "staticwebassets\\js\\SeatSelection.js"
     },
     {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Route.js",
+      "PackagePath": "staticwebassets\\js\\admin\\Route.js"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Schedule.js",
+      "PackagePath": "staticwebassets\\js\\admin\\Schedule.js"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Seat.js",
+      "PackagePath": "staticwebassets\\js\\admin\\Seat.js"
+    },
+    {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Station.js",
       "PackagePath": "staticwebassets\\js\\admin\\Station.js"
     },

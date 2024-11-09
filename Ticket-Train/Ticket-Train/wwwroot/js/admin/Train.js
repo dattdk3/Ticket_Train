@@ -25,11 +25,11 @@
     $('#updateForm').submit(function (event) {
         event.preventDefault();
 
-        var stationId = $('#TrainId').val();
+        var trainId = $('#TrainId').val();
         var updatedName = $('#UpdateTrainName').val();
 
         var data = {
-            TrainId: TrainId,
+            TrainId: trainId,
             Name: updatedName
         }
         $.ajax({
@@ -42,7 +42,7 @@
                 location.reload();
             },
             error: function () {
-                alert("Không thể cập nhật trạm.");
+                alert("Không thể cập nhật tàu.");
             }
         });
     });
@@ -63,7 +63,7 @@ function editTrain(trainId) {
             $('#btnUpdate').prop('disabled', false);
         },
         error: function () {
-            alert("Không thể lấy thông tin trạm.");
+            alert("Không thể lấy thông tin tàu.");
         }
     });
 }
@@ -75,11 +75,11 @@ function deleteTrain(stationId) {
         type: 'PUT',
         success: function (response) {
 
-            alert("Xoá trạm thành công!");
+            alert("Xoá tàu thành công!");
             location.reload();
         },
         error: function () {
-            alert("Không thể lấy thông tin trạm.");
+            alert("Không thể lấy thông tin tàu.");
         }
     });
 }

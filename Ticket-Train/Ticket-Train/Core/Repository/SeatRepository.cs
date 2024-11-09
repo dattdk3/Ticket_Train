@@ -1,4 +1,5 @@
-﻿using Ticket_Train.Core.IRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using Ticket_Train.Core.IRepository;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
@@ -9,14 +10,19 @@ namespace Ticket_Train.Core.Repository
         {
         }
 
-        public Task<List<Seat>> GetAvailableSeats(int offset, int count, out int totalcount)
+        public Task<List<Seat>> GetListSeats(int offset, int count, out int totalcount)
         {
-            throw new NotImplementedException();
+            totalcount = _context.Seats.Count();
+            
+            return _context.Seats
+                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
         }
 
-        public Task<Seat> GetSeatByNumber(int seatNumber)
+        public async Task<Seat> GetSeatById(int id)
         {
-            throw new NotImplementedException();
+             Seat seat = await _context.Seats.
+                                       FirstOrDefaultAsync(o => o.SeatId == id);
+            return seat;
         }
     }
 }

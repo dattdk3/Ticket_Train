@@ -110,6 +110,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("int")
                         .HasColumnName("distance");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("OriginId")
                         .HasColumnType("int")
                         .HasColumnName("origin_id");
@@ -136,6 +139,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("departure_time");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<int>("RouteId")
                         .HasColumnType("int")
                         .HasColumnName("route_id");
@@ -161,6 +167,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("seat_id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")

@@ -18,7 +18,7 @@ namespace Ticket_Train.Models
 
         public virtual DbSet<Passenger> Passengers { get; set; } = null!;
         public virtual DbSet<Reservation> Reservations { get; set; } = null!;
-        public virtual DbSet<Route> Routes { get; set; } = null!;
+        public virtual DbSet<Routes> Routes { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<Station> Stations { get; set; } = null!;
         public virtual DbSet<Train> Trains { get; set; } = null!;
@@ -91,7 +91,7 @@ namespace Ticket_Train.Models
                     .HasConstraintName("reservation_scheduleFK");
             });
 
-            modelBuilder.Entity<Route>(entity =>
+            modelBuilder.Entity<Routes>(entity =>
             {
                 entity.ToTable("routes");
                 entity.HasKey(o => o.RouteId);

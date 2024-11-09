@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ticket_Train.Migrations
 {
-    public partial class YourMigrationName : Migration
+    public partial class MigrationName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,7 +78,8 @@ namespace Ticket_Train.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     origin_id = table.Column<int>(type: "int", nullable: true),
                     destination_id = table.Column<int>(type: "int", nullable: true),
-                    distance = table.Column<int>(type: "int", nullable: false)
+                    distance = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -103,7 +104,8 @@ namespace Ticket_Train.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     train_id = table.Column<int>(type: "int", nullable: false),
                     route_id = table.Column<int>(type: "int", nullable: false),
-                    departure_time = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    departure_time = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -154,7 +156,8 @@ namespace Ticket_Train.Migrations
                     train_id = table.Column<int>(type: "int", nullable: false),
                     schedule_id = table.Column<int>(type: "int", nullable: false),
                     status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {

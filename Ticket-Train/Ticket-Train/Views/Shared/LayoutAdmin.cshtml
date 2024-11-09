@@ -9,6 +9,13 @@
 
 
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -127,6 +134,11 @@
 
         a {
             text-decoration: none;
+            color: white;
+        }
+
+        .list-item a {
+            color: honeydew;
         }
 
         .first_row h1 {
@@ -277,7 +289,7 @@
             </div>
 
             <div class="col_right">
-
+                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
                 <div class="first_row">
                     <div class="title_r">
                         <h1>Manage Schedule</h1>
@@ -329,6 +341,7 @@
                     <!-- Pagination buttons -->
                     <div class="pagination" id="pagination"></div>
                 </div>
+            </div>
             </div>
         </div>
 

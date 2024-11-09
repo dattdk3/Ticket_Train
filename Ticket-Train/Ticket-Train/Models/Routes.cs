@@ -1,8 +1,8 @@
 ﻿namespace Ticket_Train.Models
 {
-    public partial class Route
+    public partial class Routes
     {
-        public Route()
+        public Routes()
         {
             Schedules = new HashSet<Schedule>();
         }
@@ -11,6 +11,7 @@
         public int? OriginId { get; set; }
         public int? DestinationId { get; set; }
         public int Distance { get; set; }
+        public bool? IsActive { get; set; } = true;
 
         public virtual Station? Destination { get; set; }
         public virtual Station? Origin { get; set; }
