@@ -1,0 +1,93 @@
+﻿@model List<Ticket_Train.Models.Station>
+@{
+    ViewData["Title"] = "ShowView";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/admin/Station.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control label {
+        font-weight: bold;
+    }
+
+    .form-control input {
+        border-radius: 5px;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Thêm Mới Trạm</h3>
+                <form id="stationform" method="post">
+                    <div class="form-group">
+                        <label for="StationName">Tên Trạm <span style="color: red;">*</span></label>
+                        <input name="StationName" id="StationName" type="text" class="form-control" placeholder="Nhập tên trạm" required>
+                    </div>
+                    <button class="btn btn-primary auth-btn" id="btnReg" type="submit">Thêm mới</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Cập Nhật Trạm</h3>
+                <form id="updateForm" method="post">
+                    <div class="form-group">
+                        <input name="StationId" hidden id="StationId" type="number" class="form-control" placeholder="Nhập mã trạm cần cập nhật" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateStationName">Tên Trạm Mới <span style="color: red;">*</span></label>
+                        <input name="UpdateStationName" id="UpdateStationName" type="text" class="form-control" placeholder="Nhập tên trạm mới" required>
+                    </div>
+                    <button class="btn btn-success auth-btn" disabled id="btnUpdate" type="submit">Cập nhật</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Danh Sách Trạm</h3>
+    <table class="table table-bordered" id="table">
+        <thead class="thead-light">
+            <tr>
+                <th>StationId</th>
+                <th>StationName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var station in Model)
+            {
+                <tr>
+                    <td>@station.StationId</td>
+                    <td>@station.Name</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editStation(@station.StationId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteStation(@station.StationId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

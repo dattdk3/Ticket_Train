@@ -1,0 +1,114 @@
+﻿@model List<Ticket_Train.Models.Routes>
+@{
+    ViewData["Title"] = "Route Management";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/admin/Route.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control label {
+        font-weight: bold;
+    }
+
+    .form-control input {
+        border-radius: 5px;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Thêm Mới Tuyến Đường</h3>
+                <form id="routeForm" method="post">
+                    <div class="form-group">
+                        <label for="OriginId">Mã Trạm Gốc <span style="color: red;">*</span></label>
+                        <input name="OriginId" id="OriginId" type="number" class="form-control" placeholder="Nhập mã trạm gốc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="DestinationId">Mã Trạm Đích <span style="color: red;">*</span></label>
+                        <input name="DestinationId" id="DestinationId" type="number" class="form-control" placeholder="Nhập mã trạm đích" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Distance">Khoảng Cách (km) <span style="color: red;">*</span></label>
+                        <input name="Distance" id="Distance" type="number" class="form-control" placeholder="Nhập khoảng cách" required>
+                    </div>
+                    <button class="btn btn-primary auth-btn" id="btnAdd" type="submit">Thêm mới</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Cập Nhật Tuyến Đường</h3>
+                <form id="updateRouteForm" method="post">
+                    <div class="form-group">
+                        <input name="RouteId" hidden id="RouteId" type="number" class="form-control" placeholder="Nhập mã tuyến đường cần cập nhật" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateOriginId">Mã Trạm Gốc <span style="color: red;">*</span></label>
+                        <input name="UpdateOriginId" id="UpdateOriginId" type="number" class="form-control" placeholder="Nhập mã trạm gốc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateDestinationId">Mã Trạm Đích <span style="color: red;">*</span></label>
+                        <input name="UpdateDestinationId" id="UpdateDestinationId" type="number" class="form-control" placeholder="Nhập mã trạm đích" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateDistance">Khoảng Cách Mới (km)</label>
+                        <input name="UpdateDistance" id="UpdateDistance" type="number" class="form-control" placeholder="Nhập khoảng cách mới">
+                    </div>
+                    <button class="btn btn-success auth-btn" disabled id="btnUpdate" type="submit">Cập nhật</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Danh Sách Tuyến Đường</h3>
+    <table class="table table-bordered" id="table">
+        <thead class="thead-light">
+            <tr>
+                <th>RouteId</th>
+                <th>Trạm Gốc</th>
+                <th>Trạm Đích</th>
+                <th>Khoảng Cách (km)</th>
+                <th>Hoạt Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var route in Model)
+            {
+                <tr>
+                    <td>@route.RouteId</td>
+                    <td>@route.OriginId</td>
+                    <td>@route.DestinationId</td>
+                    <td>@route.Distance</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editRoute(@route.RouteId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteRoute(@route.RouteId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
