@@ -5,12 +5,20 @@ using Ticket_Train.Models;
 
 namespace Ticket_Train.Controllers
 {
+    public class DataForTrain
+    {
+        public Train Trains { get; set; }
+
+        public List<Seat> seat { get; set; }
+    }
     public class TrainController : Controller
     {
         private readonly IUnitOfWork _trainRepository;
-        public TrainController(IUnitOfWork train)
+        private readonly IUnitOfWork _newRepository;
+        public TrainController(IUnitOfWork train, IUnitOfWork newRepository)
         {
             _trainRepository = train;
+            _newRepository = newRepository;
         }
         public async Task<IActionResult> ShowView()
         {
@@ -25,10 +33,19 @@ namespace Ticket_Train.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTrain([FromBody] Train data)
+        public async Task<IActionResult> CreateTrain([FromBody] DataForTrain data)
         {
-            await _trainRepository.Trains.AddAsync(data);
+            await _trainRepository.Trains.AddAsync(data.Trains);
             await _trainRepository.SaveAsync();
+            int id = data.Trains.TrainId;
+
+            foreach (var item in data.seat)
+            {
+                item.TrainId = id;
+                if(item.Price > 0) await _trainRepository.Seats.AddAsync(item);
+            }
+            await _trainRepository.SaveAsync();
+
             return Ok(new { success = true, message = "Thêm mới thành công." });
         }
 

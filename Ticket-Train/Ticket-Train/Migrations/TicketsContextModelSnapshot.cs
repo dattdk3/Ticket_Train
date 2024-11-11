@@ -93,7 +93,7 @@ namespace Ticket_Train.Migrations
                     b.ToTable("reservations", (string)null);
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.Property<int>("RouteId")
                         .ValueGeneratedOnAdd()
@@ -175,14 +175,13 @@ namespace Ticket_Train.Migrations
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("price");
 
-                    b.Property<int>("ScheduleId")
+                    b.Property<int?>("ScheduleId")
                         .HasColumnType("int")
                         .HasColumnName("schedule_id");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
+                    b.Property<bool>("Status")
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("bit")
                         .HasColumnName("status");
 
                     b.Property<int>("TrainId")
@@ -298,7 +297,7 @@ namespace Ticket_Train.Migrations
                     b.Navigation("Schedule");
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.HasOne("Ticket_Train.Models.Station", "Destination")
                         .WithMany("RouteDestinations")
@@ -317,7 +316,7 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Schedule", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Route", "Route")
+                    b.HasOne("Ticket_Train.Models.Routes", "Route")
                         .WithMany("Schedules")
                         .HasForeignKey("RouteId")
                         .IsRequired()
@@ -358,7 +357,7 @@ namespace Ticket_Train.Migrations
                     b.Navigation("Reservations");
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.Navigation("Schedules");
                 });
