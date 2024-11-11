@@ -1,42 +1,81 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\c#Workspace\\New folder\\Ticket-Train\\",
+  "WorkspaceRootPath": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\views\\shared\\layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\views\\shared\\layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\wwwroot\\js\\seatselection.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\wwwroot\\js\\seatselection.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\views\\station\\showview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\views\\station\\showview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\views\\train\\showview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\views\\train\\showview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\models\\ticketscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\models\\ticketscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\models\\train.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\models\\train.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\migrations\\20241105145755_updateusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\migrations\\20241105145755_updateusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\core\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\core\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\core\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\core\\irepository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\core\\irepository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\core\\irepository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\core\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\core\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\core\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\core\\utilities\\uploadfileunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\core\\utilities\\uploadfileunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\core\\utilities\\uploadfileunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\c#workspace\\new folder\\ticket-train\\ticket-train\\core\\utilities\\jsonutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|d:\\2025\\ticket_train-brandnew\\ticket_train-brandnew\\ticket-train\\ticket-train\\ticket-train\\core\\utilities\\jsonutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E282812-7ABB-4360-A939-221D86FBFC1B}|Ticket-Train\\Ticket-Train.csproj|solutionrelative:ticket-train\\core\\utilities\\jsonutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,140 +85,246 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Ticket-Train\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Ticket-Train\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-11T10:31:06.039Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "20241105145755_UpdateUserTable.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
-              "RelativeDocumentMoniker": "Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
-              "RelativeToolTip": "Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:35:15.225Z",
+              "Title": "Script.js",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\Script.js",
+              "RelativeDocumentMoniker": "Ticket-Train\\wwwroot\\js\\Script.js",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\Script.js",
+              "RelativeToolTip": "Ticket-Train\\wwwroot\\js\\Script.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-11T10:31:00.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SeatSelection.js",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\SeatSelection.js",
+              "RelativeDocumentMoniker": "Ticket-Train\\wwwroot\\js\\SeatSelection.js",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\SeatSelection.js",
+              "RelativeToolTip": "Ticket-Train\\wwwroot\\js\\SeatSelection.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-11T10:30:57.363Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LayoutAdmin.cshtml",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Shared\\LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "Ticket-Train\\Views\\Shared\\LayoutAdmin.cshtml",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Shared\\LayoutAdmin.cshtml",
+              "RelativeToolTip": "Ticket-Train\\Views\\Shared\\LayoutAdmin.cshtml",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAqwJIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:29:07.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ShowView.cshtml",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Station\\ShowView.cshtml",
+              "RelativeDocumentMoniker": "Ticket-Train\\Views\\Station\\ShowView.cshtml",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Station\\ShowView.cshtml",
+              "RelativeToolTip": "Ticket-Train\\Views\\Station\\ShowView.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:28:46.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShowView.cshtml",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Train\\ShowView.cshtml",
+              "RelativeDocumentMoniker": "Ticket-Train\\Views\\Train\\ShowView.cshtml",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Train\\ShowView.cshtml",
+              "RelativeToolTip": "Ticket-Train\\Views\\Train\\ShowView.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:28:42.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Ticket-Train\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Ticket-Train\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:28:40.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TicketsContext.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Models\\TicketsContext.cs",
+              "RelativeDocumentMoniker": "Ticket-Train\\Models\\TicketsContext.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Models\\TicketsContext.cs",
+              "RelativeToolTip": "Ticket-Train\\Models\\TicketsContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T10:13:11.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Ticket-Train\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Ticket-Train\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:12:55.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Train.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Models\\Train.cs",
+              "RelativeDocumentMoniker": "Ticket-Train\\Models\\Train.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Models\\Train.cs",
+              "RelativeToolTip": "Ticket-Train\\Models\\Train.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T10:11:53.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20241105145755_UpdateUserTable.cs",
+              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
+              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Migrations\\20241105145755_UpdateUserTable.cs",
+              "ViewState": "AgIAALIAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:35:15.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\appsettings.json",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\appsettings.json",
               "RelativeDocumentMoniker": "Ticket-Train\\appsettings.json",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\appsettings.json",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\appsettings.json",
               "RelativeToolTip": "Ticket-Train\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAACAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-11-06T10:34:54.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Program.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Program.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Program.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Program.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Program.cs",
               "RelativeToolTip": "Ticket-Train\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:33:33.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:33:33.332Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
               "RelativeToolTip": "Ticket-Train\\Core\\Repository\\UnitOfWork.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:26:59.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:26:59.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
               "RelativeToolTip": "Ticket-Train\\Core\\IRepository\\IUnitOfWork.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:24:37.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:24:37.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 16,
               "Title": "UploadFileUnit.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
               "RelativeToolTip": "Ticket-Train\\Core\\Utilities\\UploadFileUnit.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:20:18.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:20:18.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
               "Title": "JsonUtil.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
               "RelativeToolTip": "Ticket-Train\\Core\\Utilities\\JsonUtil.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:20:17.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:20:17.753Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 15,
               "Title": "BaseRepository.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Repository\\BaseRepository.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Repository\\BaseRepository.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Core\\Repository\\BaseRepository.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Core\\Repository\\BaseRepository.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Core\\Repository\\BaseRepository.cs",
               "RelativeToolTip": "Ticket-Train\\Core\\Repository\\BaseRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:14:23.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:14:23.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Ticket-Train\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\c#Workspace\\New folder\\Ticket-Train\\Ticket-Train\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\2025\\Ticket_Train-BrandNew\\Ticket_Train-BrandNew\\Ticket-Train\\Ticket-Train\\Ticket-Train\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Ticket-Train\\Controllers\\AccountController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAwwCgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T10:13:42.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T10:13:42.819Z"
             }
           ]
         }
