@@ -4,15 +4,17 @@
     {
         public Station()
         {
-            RouteDestinations = new HashSet<Route>();
-            RouteOrigins = new HashSet<Route>();
+            RouteDestinations = new HashSet<Routes>();
+            RouteOrigins = new HashSet<Routes>();
         }
 
         public int StationId { get; set; }
         public string? Name { get; set; }
 
-        public virtual ICollection<Route> RouteDestinations { get; set; }
-        public virtual ICollection<Route> RouteOrigins { get; set; }
+        public bool? IsActive { get; set; } = true;
+
+        public virtual ICollection<Routes> RouteDestinations { get; set; }
+        public virtual ICollection<Routes> RouteOrigins { get; set; }
 
     }
 }

@@ -1,21 +1,25 @@
-﻿using Ticket_Train.Core.IRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using Ticket_Train.Core.IRepository;
+using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
 {
-    public class RouteRepository : BaseRepository<Route> , IRouteRepository
+    public class RouteRepository : BaseRepository<Routes>, IRouteRepository
     {
-        public RouteRepository(Models.TicketsContext context) : base(context)
+        public RouteRepository(TicketsContext context) : base(context) { }
+        public Task<List<Routes>> GetRoutes(int offset, int count, out int totalcount)
         {
+
+            totalcount = _context.Routes.Count();
+            return _context.Routes
+                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
         }
 
-        public Task<List<Route>> GetRoutes(int offset, int count, out int totalcount)
+        public async Task<Routes> GetRouteWithDetails(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Route> GetRouteWithDetails(int id)
-        {
-            throw new NotImplementedException();
+            Routes route = await _context.Routes.
+                                        FirstOrDefaultAsync(o => o.RouteId == id);
+            return route;
         }
     }
 }

@@ -1,0 +1,127 @@
+﻿@model List<Ticket_Train.Models.Seat>
+@{
+    ViewData["Title"] = "Seat Management";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/admin/Seat.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control label {
+        font-weight: bold;
+    }
+
+    .form-control input {
+        border-radius: 5px;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Thêm Mới Ghế</h3>
+                <form id="seatForm" method="post">
+                    <div class="form-group">
+                        <label for="TrainId">Mã Tàu <span style="color: red;">*</span></label>
+                        <input name="TrainId" id="TrainId" type="number" class="form-control" placeholder="Nhập mã tàu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ScheduleId">Mã Lịch Trình <span style="color: red;">*</span></label>
+                        <input name="ScheduleId" id="ScheduleId" type="number" class="form-control" placeholder="Nhập mã lịch trình" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Status">Trạng Thái Mới <span style="color: red;">*</span></label>
+                        <select name="Status" id="Status" class="form-control" required>
+                            <option value="Available">Available</option>
+                            <option value="Booked">Booked</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Giá Ghế <span style="color: red;">*</span></label>
+                        <input name="Price" id="Price" type="number" class="form-control" placeholder="Nhập giá ghế" required>
+                    </div>
+                    <button class="btn btn-primary auth-btn" id="btnAdd" type="submit">Thêm mới</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Cập Nhật Ghế</h3>
+                <form id="updateSeatForm" method="post">
+                    <div class="form-group">
+                        <input name="SeatId" hidden id="SeatId" type="number" class="form-control" placeholder="Nhập mã ghế cần cập nhật" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTrainId">Mã Tàu <span style="color: red;">*</span></label>
+                        <input name="UpdateTrainId" id="UpdateTrainId" type="number" class="form-control" placeholder="Nhập mã tàu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateScheduleId">Mã Lịch Trình <span style="color: red;">*</span></label>
+                        <input name="UpdateScheduleId" id="UpdateScheduleId" type="number" class="form-control" placeholder="Nhập mã lịch trình" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateStatus">Trạng Thái Mới <span style="color: red;">*</span></label>
+                        <select name="UpdateStatus" id="UpdateStatus" class="form-control" required>
+                            <option value="Available">Available</option>
+                            <option value="Booked">Booked</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdatePrice">Giá Mới</label>
+                        <input name="UpdatePrice" id="UpdatePrice" type="number" class="form-control" placeholder="Nhập giá mới">
+                    </div>
+                    <button class="btn btn-success auth-btn" disabled id="btnUpdate" type="submit">Cập nhật</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Danh Sách Ghế</h3>
+    <table class="table table-bordered" id="table">
+        <thead class="thead-light">
+            <tr>
+                <th>SeatId</th>
+                <th>TrainId</th>
+                <th>Trạng Thái</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var seat in Model)
+            {
+                <tr>
+                    <td>@seat.SeatId</td>
+                    <td>@seat.TrainId</td>
+                    <td>@seat.Status</td>
+                    <td>@seat.Price</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editSeat(@seat.SeatId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteSeat(@seat.SeatId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

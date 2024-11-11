@@ -5,6 +5,8 @@ namespace Ticket_Train.Core.IRepository
 {
     public interface ITrainRepository : IGenericRepository<Train>
     {
-        public Task<List<Train>> GetAll(int pagesize, int index, ICallback.CallFunc callback = null);
+        Task<Train> GetWithid(int id);
+
+        Task<List<Train>> GetListTrain(int offset, int count, out int totalcount);
     }
 }

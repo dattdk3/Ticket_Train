@@ -29,8 +29,8 @@ builder.Services.AddScoped<ITrainRepository, TrainRepository>();
 builder.Services.AddScoped<IUserRepository, UserRespository>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
 builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
-builder.Services.AddScoped<IRouteRepository, RouteRepository>();
 
+builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddControllersWithViews();

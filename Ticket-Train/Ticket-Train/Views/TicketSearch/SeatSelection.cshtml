@@ -1,100 +1,139 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
+﻿@model IEnumerable<Ticket_Train.Models.Train>
+@using Ticket_Train.Models
+<style>
+    .train-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .train-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        width: 250px;
+    }
+
+    .seats-section {
+        margin-top: 10px;
+    }
+
+    .seats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .seat {
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .seat.available {
+            background-color: #d4f0d4;
+        }
+
+        .seat.booked {
+            background-color: #f0d4d4;
+            cursor: not-allowed;
+        }
+
+        .seat.reserved {
+            background-color: #d4d4f0;
+            cursor: not-allowed;
+        }
+
+        .seat.selected {
+            background-color: #ffd700;
+        }
+
+</style>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chọn Chỗ Ngồi - Đặt Vé Tàu</title>
-    <link rel="stylesheet" href="~/css/SeatSelection.css">
+    @* <link rel="stylesheet" href="~/css/SeatSelection.css"> *@
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">VeTauTrucTuyen.vn</div>
-            <ul class="nav-links">
-                <li><a href="#">Đặt vé tàu</a></li>
-                <li><a href="#">Câu hỏi</a></li>
-                <li><a href="#">Cẩm nang đi tàu</a></li>
-                <li><a href="#">Khuyến mãi</a></li>
-                <li><a href="#">Vé tàu Tết</a></li>
-                <li><a href="#">Vé đoàn</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h2>Danh Sách Tàu và Ghế</h2>
 
-    <main>
-        <div class="journey-info">
-            <h2>Chiều đi: ngày 12/11/2024 từ Sài Gòn đến Hà Nội</h2>
-        </div>
+    <div class="train-list">
+        @foreach (var train in Model)
+        {
+            <div class="train-item">
+                <!-- Thông tin tàu -->
+                <h3>@train.Name</h3>
+                <p>Trạng thái: @(train.IsActive == true ? "Hoạt động" : "Không hoạt động")</p>
 
-        <div class="train-schedule">
-            <div class="train-item active" id="SE8">
-                <div class="train-details">
-                    <p>TG đi: 12/11/2024 06:00</p>
-                    <p>TG đến: 13/11/2024 19:12</p>
-                </div>
-            </div>
-            <!-- Add other trains (SE6, SE4, SE2) similarly -->
-        </div>
-
-        <div class="seating-section">
-            <h3>Ngồi mềm (SE8 - TG đi 12/11/2024 06:00)</h3>
-            <div class="seating-layout">
-                <div class="seats-grid">
-                    <!-- First class seats -->
-                    <div class="seat-row">
-                        <div class="seat" data-seat="1">1</div>
-                        <div class="seat" data-seat="8">8</div>
-                        <div class="seat" data-seat="9">9</div>
-                        <!-- Add all seats up to 64 -->
-                    </div>
-                    <!-- Continue with other rows -->
-                </div>
-            </div>
-
-            <div class="seat-info">
-                <div class="seat-types">
-                    <div class="seat-type">
-                        <div class="seat available"></div>
-                        <span>Ghế trống</span>
-                    </div>
-                    <div class="seat-type">
-                        <div class="seat selected"></div>
-                        <span>Ghế đang chọn</span>
-                    </div>
-                    <div class="seat-type">
-                        <div class="seat occupied"></div>
-                        <span>Ghế đã bán</span>
+                <!-- Danh sách ghế của từng tàu -->
+                <div class="seats-section">
+                    <h4>Danh sách ghế</h4>
+                    <div class="seats-grid">
+                        @foreach (var seat in train.Seats)
+                        {
+                            <div class="seat @(seat.Status.ToLower())"
+                                 data-seat-id="@seat.SeatId"
+                                 data-status="@seat.Status.ToLower()"
+                                 data-price="@seat.Price">
+                                Ghế @seat.SeatId
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
-        </div>
+        }
+    </div>
 
-        <div class="sleeper-section">
-            <h3>Nằm khoang 4 điều hòa (SE8 - TG đi 12/11/2024 06:00)</h3>
-            <div class="sleeper-layout">
-                <div class="compartments">
-                    <!-- Compartment rows -->
-                    <div class="compartment-row">
-                        <span class="compartment-label">T2</span>
-                        <div class="berth" data-berth="3">3</div>
-                        <div class="berth" data-berth="4">4</div>
-                        <!-- Add all berths -->
-                    </div>
-                    <!-- Continue with other compartments -->
-                </div>
-            </div>
-        </div>
+    <!-- Thông tin ghế đã chọn -->
+    <div class="booking-summary">
+        <h3>Thông tin đặt vé</h3>
+        <p>Ghế đã chọn: <span id="selectedSeatsDisplay">Chưa chọn ghế</span></p>
+        <p>Tổng tiền: <span id="totalPrice">0 VND</span></p>
+        <button id="proceedToBooking" class="proceed-btn">Tiếp Tục</button>
+    </div>
 
-        <div class="booking-summary">
-            <h3>Thông tin đặt vé</h3>
-            <div class="selected-seats">
-                <p>Ghế đã chọn: <span id="selectedSeatsDisplay">Chưa chọn ghế</span></p>
-                <p>Tổng tiền: <span id="totalPrice">0 VND</span></p>
-            </div>
-            <button id="proceedToBooking" class="proceed-btn">Tiếp tục</button>
-        </div>
-    </main>
-
-    <script src="~/js/SeatSelection.js"></script>
+@*     <script src="~/js/SeatSelection.js"></script> *@
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const seats = document.querySelectorAll('.seat');
+        const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
+        const totalPriceDisplay = document.getElementById('totalPrice');
+        let selectedSeats = [];
+        let totalPrice = 0;
+
+        seats.forEach(seat => {
+            const status = seat.dataset.status;
+
+            // Chỉ cho phép chọn ghế trống
+            if (status === 'available') {
+                seat.addEventListener('click', () => {
+                    const seatId = seat.dataset.seatId;
+                    const price = parseFloat(seat.dataset.price);
+
+                    // Kiểm tra xem ghế đã được chọn hay chưa
+                    if (seat.classList.contains('selected')) {
+                        // Hủy chọn ghế
+                        seat.classList.remove('selected');
+                        selectedSeats = selectedSeats.filter(id => id !== seatId);
+                        totalPrice -= price;
+                    } else {
+                        // Chọn ghế
+                        seat.classList.add('selected');
+                        selectedSeats.push(seatId);
+                        totalPrice += price;
+                    }
+
+                    // Cập nhật hiển thị ghế đã chọn và tổng tiền
+                    selectedSeatsDisplay.textContent = selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Chưa chọn ghế';
+                    totalPriceDisplay.textContent = `${totalPrice.toLocaleString()} VND`;
+                });
+            }
+        });
+    });
+
+</script>

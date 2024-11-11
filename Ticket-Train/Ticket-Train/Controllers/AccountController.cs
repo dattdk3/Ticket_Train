@@ -48,7 +48,7 @@ namespace Ticket_Train.Controllers
             // Lưu tên người dùng vào session
             HttpContext.Session.SetString("UserName", user.Name);
 
-            return Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name });
+            return Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name, role = user.Role });
         }
         public IActionResult Logout()
         {
