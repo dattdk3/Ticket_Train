@@ -101,7 +101,7 @@
         sessionStorage.setItem('totalPrice', document.getElementById('totalPrice').textContent);
 
         // Redirect to booking information page
-        window.location.href = 'booking-info.html';
+        window.location.href = '/Payment/BookingInfo';
     });
 
     // Initialize the page

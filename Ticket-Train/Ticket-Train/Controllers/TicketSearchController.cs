@@ -17,22 +17,22 @@ namespace Ticket_Train.Controllers
 
         public async Task<IActionResult> SeatSelection()
         {
-            // Lấy tất cả tàu từ repository
-            int totalcount = 0;
-            var trains = await _trainRepository.Trains.GetListTrain(0, 0, out totalcount);
+            //// Lấy tất cả tàu từ repository
+            //int totalcount = 0;
+            //var trains = await _trainRepository.Trains.GetListTrain(0, 0, out totalcount);
 
-            //var train = await _trainRepository.Trains
-            //    .Include(t => t.Seats) // Include Seats to ensure it's populated
-            //    .Where(t => t.IsActive == true)
-            //    .ToList(); 
+            ////var train = await _trainRepository.Trains
+            ////    .Include(t => t.Seats) // Include Seats to ensure it's populated
+            ////    .Where(t => t.IsActive == true)
+            ////    .ToList(); 
 
-            // Kiểm tra nếu không có tàu nào
-            if (trains == null || !trains.Any())
-            {
-                return NotFound("Không tìm thấy tàu nào.");
-            }
+            //// Kiểm tra nếu không có tàu nào
+            //if (trains == null || !trains.Any())
+            //{
+            //    return NotFound("Không tìm thấy tàu nào.");
+            //}
 
-            return View(trains);
+            return View();
         }
     }
 }

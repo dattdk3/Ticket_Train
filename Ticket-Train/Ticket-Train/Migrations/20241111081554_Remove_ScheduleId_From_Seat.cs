@@ -30,7 +30,7 @@ namespace Ticket_Train.Migrations
             table: "seats",
             type: "nvarchar(max)",
             nullable: true);
-            // Sau đó chạy lệnh Update-Database
+            // Sau đó chạy lệnh Update-Database <Tên_Migration_Trước>
 
         }
 

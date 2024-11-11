@@ -1,10 +1,30 @@
-﻿$(document).ready(function () {
+﻿﻿$(document).ready(function () {
     $('#trainform').on('submit', function (e) {
         e.preventDefault();
 
-        const data = {
+        var prices = [];
+        $('input[name="prices[]"]').each(function () {
+            prices.push($(this).val());
+        });
+
+        let seats = [];
+
+        for (var i = 0; i < prices.length; i++) {
+            const seat = {
+                Price: Number(prices[i])
+            }
+            seats.push(seat);
+        }
+
+        const _train = {
             Name: $('#TrainName').val()
+        }
+
+        const data = {
+            Trains: _train,
+            seat: seats
         };
+
 
         $.ajax({
             type: 'POST',
