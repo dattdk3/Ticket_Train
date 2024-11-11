@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ticket_Train.Core.IRepository;
+using Microsoft.AspNetCore.Mvc;
+using Ticket_Train.Core.IRepository;
 using Ticket_Train.Core.Repository;
 using Ticket_Train.Models;
 
@@ -11,6 +13,7 @@ namespace Ticket_Train.Controllers
 
         public List<Seat> seat { get; set; }
     }
+    [RoleAuthorize(1)] // Chỉ cho phép người dùng có Role = 1
     public class TrainController : Controller
     {
         private readonly IUnitOfWork _trainRepository;
@@ -41,6 +44,7 @@ namespace Ticket_Train.Controllers
 
             foreach (var item in data.seat)
             {
+                Console.WriteLine(id);
                 item.TrainId = id;
                 if (item.Price > 0) await _trainRepository.Seats.AddAsync(item);
             }

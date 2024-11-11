@@ -10,7 +10,7 @@
         //public string NewColumn { get; set; }
         public bool? IsActive { get; set; } = true;
         // Navigation properties
-        public Train Train { get; set; }
+        public virtual Train Train { get; set; }
 
         }
 }

@@ -6,6 +6,7 @@ using Ticket_Train.Models;
 
 namespace Ticket_Train.Controllers
 {
+    [RoleAuthorize(1)] // Chỉ cho phép người dùng có Role = 1
     public class StationController : Controller
     {
         private readonly IUnitOfWork _stationRepository;
