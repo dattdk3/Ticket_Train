@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ticket_Train.Migrations
 {
-    public partial class MigrationName : Migration
+    public partial class AddMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,6 +97,27 @@ namespace Ticket_Train.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "seats",
+                columns: table => new
+                {
+                    seat_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    train_id = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<bool>(type: "bit", maxLength: 20, nullable: false),
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seats", x => x.seat_id);
+                    table.ForeignKey(
+                        name: "seat_trainFK",
+                        column: x => x.train_id,
+                        principalTable: "train",
+                        principalColumn: "train_id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "schedules",
                 columns: table => new
                 {
@@ -147,33 +168,6 @@ namespace Ticket_Train.Migrations
                         principalColumn: "schedule_id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "seats",
-                columns: table => new
-                {
-                    seat_id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    train_id = table.Column<int>(type: "int", nullable: false),
-                    schedule_id = table.Column<int>(type: "int", nullable: false),
-                    status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_seats", x => x.seat_id);
-                    table.ForeignKey(
-                        name: "seat_scheduleFK",
-                        column: x => x.schedule_id,
-                        principalTable: "schedules",
-                        principalColumn: "schedule_id");
-                    table.ForeignKey(
-                        name: "seat_trainFK",
-                        column: x => x.train_id,
-                        principalTable: "train",
-                        principalColumn: "train_id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_reservations_passenger_id",
                 table: "reservations",
@@ -203,11 +197,6 @@ namespace Ticket_Train.Migrations
                 name: "IX_schedules_train_id",
                 table: "schedules",
                 column: "train_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_seats_schedule_id",
-                table: "seats",
-                column: "schedule_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_seats_train_id",

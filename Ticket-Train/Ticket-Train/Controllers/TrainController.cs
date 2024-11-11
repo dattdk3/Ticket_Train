@@ -46,6 +46,7 @@ namespace Ticket_Train.Controllers
             {
                 Console.WriteLine(id);
                 item.TrainId = id;
+                item.Status = false;
                 if (item.Price > 0) await _trainRepository.Seats.AddAsync(item);
             }
             await _trainRepository.SaveAsync();
