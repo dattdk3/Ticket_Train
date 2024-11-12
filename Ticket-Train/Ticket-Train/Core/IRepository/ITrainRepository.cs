@@ -7,6 +7,6 @@ namespace Ticket_Train.Core.IRepository
     {
         Task<Train> GetWithid(int id);
 
-        Task<List<Train>> GetListTrain(int offset, int count, out int totalcount);
+        Task<List<Train>> GetListTrain(int pageIndex = 1, int pageSize = 10);
     }
 }

@@ -1,4 +1,5 @@
-﻿@model List<Ticket_Train.Models.Train>
+﻿@model Ticket_Train.Core.Utilities.PaginatedList<Train>
+
 @{
     ViewData["Title"] = "ShowView";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
@@ -126,6 +127,20 @@
                 }
             </tbody>
         </table>
+
+        <div class="pagination">
+            @if (Model.HasPreviousPage())
+            {
+                <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex - 1)" asp-route-pageSize="@Model.Count">Previous</a>
+            }
+
+            <span>Page @Model.PageIndex of @Model.TotalPages</span>
+
+            @if (Model.HasNextPage())
+            {
+                <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex + 1)" asp-route-pageSize="@Model.Count">Next</a>
+            }
+        </div>
     </div>
 </body>
 </html>
@@ -143,8 +158,4 @@
             });
         });
     });
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> 684f0a0139e3fd7510b1cabf1e55e0cf1cd66e34
