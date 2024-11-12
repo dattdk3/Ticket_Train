@@ -18,7 +18,7 @@ namespace Ticket_Train.Models
 
         public virtual DbSet<Passenger> Passengers { get; set; } = null!;
         public virtual DbSet<Reservation> Reservations { get; set; } = null!;
-        public virtual DbSet<Route> Routes { get; set; } = null!;
+        public virtual DbSet<Routes> Routes { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<Station> Stations { get; set; } = null!;
         public virtual DbSet<Train> Trains { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace Ticket_Train.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=ADMIN;Database=Ticket_Train;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=localhost,1433; Database=Ticket_Train_New;User Id=sa;Password=anhchien2003;TrustServerCertificate=true");
             }
         }
 
@@ -91,7 +91,7 @@ namespace Ticket_Train.Models
                     .HasConstraintName("reservation_scheduleFK");
             });
 
-            modelBuilder.Entity<Route>(entity =>
+            modelBuilder.Entity<Routes>(entity =>
             {
                 entity.ToTable("routes");
                 entity.HasKey(o => o.RouteId);
@@ -192,14 +192,9 @@ namespace Ticket_Train.Models
 
                 entity.Property(e => e.TrainId).HasColumnName("train_id");
 
-
-                entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
-
                 entity.Property(e => e.Price)
-                    .HasColumnType("decimal(18, 2)")  // Định dạng kiểu dữ liệu decimal cho giá vé
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("price");
-
-                // Thiết lập quan hệ
                 entity.HasOne(d => d.Train)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.TrainId)
@@ -207,11 +202,6 @@ namespace Ticket_Train.Models
                     .HasConstraintName("seat_trainFK");
 
 
-                entity.HasOne(d => d.Schedule)
-                    .WithMany()
-                    .HasForeignKey(d => d.ScheduleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("seat_scheduleFK");
             });
 
             modelBuilder.Entity<User>(entity =>

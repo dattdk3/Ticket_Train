@@ -1,8 +1,10 @@
-﻿namespace Ticket_Train.Core.IRepository
+﻿using Ticket_Train.Models;
+
+namespace Ticket_Train.Core.IRepository
 {
-    public interface IRouteRepository : IGenericRepository<Route>
+    public interface IRouteRepository : IGenericRepository<Routes>
     {
-        Task<Route> GetRouteWithDetails(int id);
-        Task<List<Route>> GetRoutes(int offset, int count, out int totalcount);
+        Task<Routes> GetRouteWithDetails(int id);
+        Task<List<Routes>> GetRoutes(int offset, int count, out int totalcount);
     }
 }

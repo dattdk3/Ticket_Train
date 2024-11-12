@@ -14,9 +14,11 @@ namespace Ticket_Train.Core.Repository
         public Task<List<Station>> GetListStation(int offset, int count, out int totalcount)
         {
             totalcount = _context.Stations.Count();
-            return _context.Stations.
-                            Skip(offset - 1).
-                            Take(count).ToListAsync();
+            //return _context.Stations.
+            //                Skip(offset - 1).
+            //                Take(count).Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
+            return _context.Stations
+                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
         }
 
 

@@ -11,13 +11,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Header styles */
-header {
-    background-color: #2171c1;
-    color: white;
-    padding: 1rem 0;
-}
-
 .nav-links {
     display: flex;
     justify-content: center;
