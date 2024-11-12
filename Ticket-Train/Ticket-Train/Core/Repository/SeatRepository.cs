@@ -24,5 +24,10 @@ namespace Ticket_Train.Core.Repository
                                        FirstOrDefaultAsync(o => o.SeatId == id);
             return seat;
         }
+
+        public async Task<List<Seat>> GetSeatWithTrainid(int trainid)
+        {
+            return await _context.Seats.Where(o => o.TrainId == trainid).ToListAsync();
+        }
     }
 }

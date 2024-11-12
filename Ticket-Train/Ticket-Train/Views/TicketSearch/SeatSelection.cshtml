@@ -1,4 +1,5 @@
-﻿<head>
+﻿@model Ticket_Train.Core.Utilities.PaginatedList<Train>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chọn Chỗ Ngồi - Đặt Vé Tàu</title>
@@ -35,12 +36,23 @@
             margin: 20px 0;
         }
 
-        .ticket-item {
-            margin-bottom: 15px;
+        .train-item {
+            flex: 0 0 auto;
             padding: 15px;
+            width: 200px;
             background-color: #f0f0f0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
         }
+
+            .train-item:hover {
+                transform: scale(1.05);
+                background-color: #e0e0e0;
+            }
+
 
         .ticket-info {
             display: flex;
@@ -86,6 +98,34 @@
             .checkout-button:hover {
                 background-color: #0056b3;
             }
+
+        .train-schedule {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .seat {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .seat.available {
+                background-color: #ADD8E6; /* Light blue */
+            }
+
+            .seat.booked {
+                background-color: #FFC0CB; /* Light pink */
+            }
     </style>
 </head>
 
@@ -106,27 +146,34 @@
     </header>
 
     <main>
-        <div class="journey-info">
-            <h2>Chiều đi: ngày 12/11/2024 từ Sài Gòn đến Hà Nội</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div class="journey-info" style="width: 100%; margin-bottom: 10px;">
+                <h2>Chiều đi: ngày 12/11/2024 từ Sài Gòn đến Hà Nội</h2>
+            </div>
+
+            <div class="train-schedule">
+                @foreach (var train in Model)
+                {
+                    <div class="train-item active" id="@train.TrainId" onclick="handleTrainClick('@train.TrainId')">
+                        <div class="train-details">
+                            <p>@train.Name</p>
+                            <p>TG đi: 12/11/2024 06:00</p>
+                            <p>TG đến: 13/11/2024 19:12</p>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
 
-        <div class="train-schedule">
-            <div class="train-item active" id="SE8">
-                <div class="train-details">
-                    <p>TG đi: 12/11/2024 06:00</p>
-                    <p>TG đến: 13/11/2024 19:12</p>
-                </div>
-            </div>
-            <!-- Add other trains (SE6, SE4, SE2) similarly -->
-        </div>
+
+
         <div class="container_show">
 
 
             <div class="seating-section">
                 <h3>Ngồi mềm (SE8 - TG đi 12/11/2024 06:00)</h3>
                 <div class="seating-layout">
-                    <div class="seats-grid">
-                        <!-- First class seats -->
+                    <div id="seats-container" class="seats-grid">
                         <div class="seat-row">
                             <div class="seat" data-seat="1">A1</div>
                             <div class="seat" data-seat="8">A2</div>
@@ -134,9 +181,26 @@
                             <div class="seat" data-seat="1">A6</div>
                             <div class="seat" data-seat="8">A9</div>
                             <div class="seat" data-seat="9">A0</div>
-                            <!-- Add all seats up to 64 -->
                         </div>
-                        <!-- Continue with other rows -->
+
+                        <div class="seat-row">
+                            <div class="seat" data-seat="1">A1</div>
+                            <div class="seat" data-seat="8">A2</div>
+                            <div class="seat" data-seat="9">A5</div>
+                            <div class="seat" data-seat="1">A6</div>
+                            <div class="seat" data-seat="8">A9</div>
+                            <div class="seat" data-seat="9">A0</div>
+                        </div>
+
+                        <div class="seat-row">
+                            <div class="seat" data-seat="1">A1</div>
+                            <div class="seat" data-seat="8">A2</div>
+                            <div class="seat" data-seat="9">A5</div>
+                            <div class="seat" data-seat="1">A6</div>
+                            <div class="seat" data-seat="8">A9</div>
+                            <div class="seat" data-seat="9">A0</div>
+                        </div>
+
                     </div>
                 </div>
 

@@ -12,6 +12,7 @@
 
         public bool? IsActive { get; set; } = true;
         // Danh sách ghế liên quan đến tàu này
+        //public string description { get; set; } = null;
         public List<Seat> Seats { get; set; }
 
         public virtual ICollection<Schedule> Schedules { get; set; }

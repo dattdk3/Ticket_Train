@@ -13,7 +13,7 @@ namespace Ticket_Train.Controllers
 
         public List<Seat> seat { get; set; }
     }
-    [RoleAuthorize(1)] // Chỉ cho phép người dùng có Role = 1
+    //[RoleAuthorize(1)] // Chỉ cho phép người dùng có Role = 1
     public class TrainController : Controller
     {
         private readonly IUnitOfWork _trainRepository;
@@ -23,10 +23,10 @@ namespace Ticket_Train.Controllers
             _trainRepository = train;
             _newRepository = newRepository;
         }
-        public async Task<IActionResult> ShowView()
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 5)
         {
             int totalcount = 0;
-            var trains = await _trainRepository.Trains.GetListTrain(10, 10, out totalcount);
+            var trains = await _trainRepository.Trains.GetListTrain(pageIndex, pageSize);
             int count = trains.Count;
             return View(trains);
         }
@@ -44,7 +44,8 @@ namespace Ticket_Train.Controllers
 
             foreach (var item in data.seat)
             {
-                Console.WriteLine(id);
+                item.TrainId = id;
+                if (item.Price > 0) await _trainRepository.Seats.AddAsync(item);
                 item.TrainId = id;
                 item.Status = false;
                 if (item.Price > 0) await _trainRepository.Seats.AddAsync(item);
