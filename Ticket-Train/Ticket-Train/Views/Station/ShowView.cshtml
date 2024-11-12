@@ -7,6 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="~/js/admin/Station.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/Admin/Train.css" rel="stylesheet">
 
 <style>
     .form-container {
@@ -69,7 +70,7 @@
 
 <div class="container mt-5">
     <h3 class="text-center mb-4">Danh Sách Trạm</h3>
-    <table class="table table-bordered" id="table">
+    @* <table class="table table-bordered" id="table">
         <thead class="thead-light">
             <tr>
                 <th>StationId</th>
@@ -89,7 +90,28 @@
                 </tr>
             }
         </tbody>
-    </table>
+    </table> *@
+
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Danh Sách Tàu</h3>
+        <div class="row">
+            @foreach (var station in Model)
+            {
+                <div class="tiem_train ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Tàu: @station.StationId</h6>
+                            <p class="card-text">Mã tàu: @station.Name</p>
+                            <button class="btn btn-warning btn-sm" onclick="editTrain(@station.StationId)">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteTrain(@station.Name)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
     <div class="pagination">
         @if (Model.HasPreviousPage())
         {
