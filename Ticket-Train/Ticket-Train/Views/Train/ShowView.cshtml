@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/js/admin/Train.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/Admin/Train.css" rel="stylesheet">
     <style>
         /* Ensure the page can scroll */
         html, body {
@@ -117,6 +118,26 @@
 
     <div class="container mt-5">
         <h3 class="text-center mb-4">Danh Sách Tàu</h3>
+        <div class="row">
+            @foreach (var train in Model)
+            {
+                <div class="tiem_train ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Tàu: @train.Name</h6>
+                            <p class="card-text">Mã tàu: @train.TrainId</p>
+                            <p class="card-text">Mota: @train.Description</p>
+                            <button class="btn btn-warning btn-sm" onclick="editTrain(@train.TrainId)">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteTrain(@train.TrainId)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @* <div class="container mt-5">
+        <h3 class="text-center mb-4">Danh Sách Tàu</h3>
         <table class="table table-bordered" id="table">
             <thead class="thead-light">
                 <tr>
@@ -138,7 +159,7 @@
                     </tr>
                 }
             </tbody>
-        </table>
+        </table> *@
 
             <div class="pagination">
                 @if (Model.HasPreviousPage())
@@ -157,11 +178,6 @@
 </body>
 </html>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
 
 <script>
     document.getElementById('addSizeButton').addEventListener('click', function () {

@@ -193,7 +193,6 @@ namespace Ticket_Train.Models
                 entity.Property(e => e.TrainId).HasColumnName("train_id");
 
 
-                //entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
 
                 entity.Property(e => e.Price)
                     .HasColumnType("decimal(18, 2)")  // Định dạng kiểu dữ liệu decimal cho giá vé

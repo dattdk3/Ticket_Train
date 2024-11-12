@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Ticket-Train.bundle.scp.css"
     },
     {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\css\\Admin\\LayoutAdmin.css",
+      "PackagePath": "staticwebassets\\css\\Admin\\LayoutAdmin.css"
+    },
+    {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\css\\Admin\\Train.css",
+      "PackagePath": "staticwebassets\\css\\Admin\\Train.css"
+    },
+    {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\css\\BookingInfo.css",
       "PackagePath": "staticwebassets\\css\\BookingInfo.css"
     },

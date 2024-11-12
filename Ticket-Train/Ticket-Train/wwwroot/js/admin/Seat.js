@@ -4,7 +4,6 @@
 
         const data = {
             trainId: $('#TrainId').val(),
-            scheduleId: $('#ScheduleId').val(),
             status: $('#Status').val(),
             price: $('#Price').val()
         };
@@ -32,14 +31,12 @@
 
         var seatId = $('#SeatId').val();
         var updatedTrainId = $('#UpdateTrainId').val();
-        var updatedScheduleId = $('#UpdateScheduleId').val();
         var updatedStatus = $('#UpdateStatus').val();
         var updatedPrice = $('#UpdatePrice').val();
 
         var data = {
             SeatId: seatId,
             TrainId: updatedTrainId,
-            ScheduleId: updatedScheduleId,
             Status: updatedStatus,
             Price: updatedPrice
         }
@@ -71,7 +68,6 @@ function editSeat(seatId) {
 
             $('#SeatId').val(data.data.seatId);
             $('#UpdateTrainId').val(data.data.trainId);
-            $('#UpdateScheduleId').val(data.data.scheduleId);
             $('#UpdateStatus').val(data.data.status);
             $('#UpdatePrice').val(data.data.price);
             $('#btnUpdate').prop('disabled', false);
