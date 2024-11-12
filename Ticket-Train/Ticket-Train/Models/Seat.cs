@@ -1,7 +1,6 @@
 ﻿namespace Ticket_Train.Models
 {
 
-
     public class Seat
     {
         public int SeatId { get; set; }           // Primary Key

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d/bdo3V7AZXK+OAHSl/X9HmOtXLGZdv0Q+RM9ZZGH6I=",
+  "Hash": "D8TGl9fm6YSLQtJzYYjn1Q/pzw4yl1N+3iTd+W3I99s=",
   "Source": "Ticket-Train",
   "BasePath": "_content/Ticket-Train",
   "Mode": "Default",
@@ -1326,6 +1326,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\image\\icon_account.png",
+      "SourceId": "Ticket-Train",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\",
+      "BasePath": "_content/Ticket-Train",
+      "RelativePath": "image/icon_account.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\icon_account.png"
     },
     {
       "Identity": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\Route.js",

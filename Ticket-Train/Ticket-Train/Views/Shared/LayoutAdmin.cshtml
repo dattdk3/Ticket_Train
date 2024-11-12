@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +37,7 @@
             top: 0;
             z-index: 999;
         }
+
 
         header {
             background-color: #2171c1;
@@ -74,10 +78,10 @@
             transition: background-color 0.3s ease;
         }
 
-        .btn_bell:hover,
-        .account:hover {
-            background-color: #49b7f7;
-        }
+            .btn_bell:hover,
+            .account:hover {
+                background-color: #49b7f7;
+            }
 
         .img-gh,
         .img-acc {
@@ -102,18 +106,18 @@
             list-style-type: none;
         }
 
-        .sidebar li {
-            padding: 15px;
-            background-color: #2171c1;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+            .sidebar li {
+                padding: 15px;
+                background-color: #2171c1;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
 
-        .sidebar li:hover {
-            background-color: #49b7f7;
-        }
+                .sidebar li:hover {
+                    background-color: #49b7f7;
+                }
 
         .col_right {
             background-color: #fff;
@@ -132,10 +136,16 @@
             border-radius: 10px;
         }
 
-        a {
-            text-decoration: none;
-            color: white;
+        .taikhoan li {
+            list-style-type: none;
         }
+
+
+            .taikhoan li a {
+                text-decoration: none;
+                color: white;
+                font-size: 16px;
+            }
 
         .list-item a {
             color: honeydew;
@@ -158,9 +168,9 @@
             transition: background-color 0.3s ease;
         }
 
-        .btn_add-User:hover {
-            background-color: #3388de;
-        }
+            .btn_add-User:hover {
+                background-color: #3388de;
+            }
 
         .second_row {
             background-color: #f1f7ff;
@@ -189,9 +199,9 @@
             font-size: 14px;
         }
 
-        button[type="text"]:hover {
-            background-color: #3388de;
-        }
+            button[type="text"]:hover {
+                background-color: #3388de;
+            }
 
         table {
             width: 100%;
@@ -199,17 +209,17 @@
             margin-top: 20px;
         }
 
-        table th,
-        table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+            table th,
+            table td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
 
-        table th {
-            background-color: #3388de;
-            color: white;
-        }
+            table th {
+                background-color: #3388de;
+                color: white;
+            }
 
         .Task_item2 button {
             margin-right: 10px;
@@ -219,9 +229,9 @@
             transition: background-color 0.3s ease;
         }
 
-        .Task_item2 button:hover {
-            background-color: #49b7f7;
-        }
+            .Task_item2 button:hover {
+                background-color: #49b7f7;
+            }
 
         .pagination {
             display: flex;
@@ -229,19 +239,19 @@
             margin-top: 20px;
         }
 
-        .pagination button {
-            background-color: #3388de;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin: 0 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+            .pagination button {
+                background-color: #3388de;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                margin: 0 5px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
 
-        .pagination button:hover {
-            background-color: #49b7f7;
-        }
+                .pagination button:hover {
+                    background-color: #49b7f7;
+                }
     </style>
 </head>
 
@@ -252,9 +262,20 @@
                 <p>TRAIN.VN</p>
             </div>
             <div class="taikhoan">
-                <button class="account" onClick="clearLocalStorage()">
-                    <a href=""><img class="img-acc" src="/icons/icon_account.png" /></a>
-                </button>
+                @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
+                {
+                    <div class="d-flex align-items-center">
+                        <li class="nav-item">
+                            <span class="nav-link text-dark">Hello, @HttpContextAccessor.HttpContext.Session.GetString("UserName")</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Account/Logout">Logout</a>
+                        </li>
+                    </div>
+                }
+                @*  <button class="account" ">
+                <a href=""><img class="img-acc" src="/image/icon_account.png" /></a>
+                </button> *@
                 <div>
                     <h6 id="acount_name"></h6>
                 </div>
@@ -268,80 +289,47 @@
             <div class="col_left">
                 <ul class="sidebar">
                     <li class="list-item">
-                        <a href="/manage_RevenueAndExpenditure/htmls/mg_Revenue.html">
+                        <a href="/Schedule/ShowView">
                             Manage
                             Schedule
                         </a>
                     </li>
                     <li id="mg_User_btn" class="list-item">
-                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Train</a>
+                        <a href="/Train/ShowView">Manage Train</a>
                     </li>
                     <li id="mg_User_btn" class="list-item">
-                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Station</a>
+                        <a href="/Station/ShowView">Manage Station</a>
                     </li>
                     <li id="mg_User_btn" class="list-item">
-                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage Passenger</a>
+                        <a href="/Route/ShowView">Manage Route</a>
                     </li>
                     <li id="mg_User_btn" class="list-item">
-                        <a href="/manage_RevenueAndExpenditure/htmls/mg_User.html">Manage User</a>
+                        <a href="/Seat/ShowView">Manage Seat</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/User/ShowView">Manage User</a>
                     </li>
                 </ul>
             </div>
 
             <div class="col_right">
                 <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
-                <div class="first_row">
-                    <div class="title_r">
-                        <h1>Manage Schedule</h1>
+                    <div class="first_row">
+                        <div class="title_r">
+                            <h1>Manage Schedule</h1>
+                        </div>
+
+
                     </div>
 
-                    <div class="btn_add-u">
-                        <button class="btn_add-User"><a href="/admin_Ticket_Train/add_Seat.html">+Tạo mới</a></button>
+                    <div class="second_row">
+
+                        @RenderBody()
+
+                        <!-- Pagination buttons -->
+                        <div class="pagination" id="pagination"></div>
                     </div>
                 </div>
-
-                <div class="second_row">
-                    <div style="margin-bottom: 30px;">
-
-                        Ngày tạo <input type="date" id="filter_date" name="create_date">
-                        <!-- <button type="text" id="create_person" name="create_person">  -->
-                        Người tạo
-                        <input type="text" id="filter_voter">
-
-
-                        Trạng Thái
-                        <select id="list_status">
-
-                            <option value="">---- ----</option>
-                            <option value="Chấp Thuận">Chấp thuận</option>
-                            <option value="Chờ duyệt">Chờ duyệt</option>
-                            <option value="Từ chối">Từ chối</option>
-                        </select>
-
-                        <button type="text" id="filter" onClick="performFilter()" name="filter">
-                            Lọc
-
-                        </button>
-
-
-                        <button style="float:right; margin-right:0px " type="text" id="sort" name="sort">
-                            <select id="list_sort" onchange="performSort()">
-                                <option value="">Sắp xếp</option>
-                                <option value="dateCreate ASC">Ngày cũ -> mới</option>
-                                <option value="dateCreate DESC">Ngày mới -> cũ </option>
-                                <option value="value ASC">Giá trị Thấp -> Cao</option>
-                                <option value="value DESC">Giá trị Cao -> Thấp</option>
-                            </select>
-                        </button>
-
-                    </div>
-
-                    @RenderBody()
-
-                    <!-- Pagination buttons -->
-                    <div class="pagination" id="pagination"></div>
-                </div>
-            </div>
             </div>
         </div>
 

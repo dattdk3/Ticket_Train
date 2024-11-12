@@ -10,9 +10,13 @@
 
   <ItemGroup>
     <Compile Remove="Data\**" />
+    <Compile Remove="wwwroot\images\**" />
     <Content Remove="Data\**" />
+    <Content Remove="wwwroot\images\**" />
     <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
     <None Remove="Data\**" />
+    <None Remove="wwwroot\images\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +29,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\css\" />

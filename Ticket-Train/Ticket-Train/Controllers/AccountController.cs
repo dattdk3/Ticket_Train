@@ -47,13 +47,18 @@ namespace Ticket_Train.Controllers
 
             // Lưu tên người dùng vào session
             HttpContext.Session.SetString("UserName", user.Name);
+            HttpContext.Session.SetInt32("UserRole", user.Role);
 
-            return Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name });
+            return Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name, role = user.Role });
         }
         public IActionResult Logout()
         {
             HttpContext.Session.Clear(); // Clear session data
             return RedirectToAction("Index", "Home");
+        }
+        public IActionResult AccessDenied()
+        {
+            return View(); // Tạo trang AccessDenied.cshtml để hiển thị thông báo
         }
     }
 }

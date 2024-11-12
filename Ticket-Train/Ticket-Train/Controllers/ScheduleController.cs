@@ -5,6 +5,7 @@ using Ticket_Train.Models;
 
 namespace Ticket_Train.Controllers
 {
+    [RoleAuthorize(1)] // Chỉ cho phép người dùng có Rol
     public class ScheduleController : Controller
     {
         private readonly IUnitOfWork _scheduleRepository;

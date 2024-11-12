@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ticket_Train.Models;
 
@@ -11,9 +12,10 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    partial class TicketsContextModelSnapshot : ModelSnapshot
+    [Migration("20241111165721_AddMigration")]
+    partial class AddMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,6 +176,7 @@ namespace Ticket_Train.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("price");
+
                     b.Property<bool>("Status")
                         .HasMaxLength(20)
                         .HasColumnType("bit")
@@ -184,6 +187,7 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     b.HasKey("SeatId");
+
                     b.HasIndex("TrainId");
 
                     b.ToTable("seats", (string)null);
@@ -327,17 +331,12 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Seat", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
-                        .WithMany()
-                        .HasForeignKey("ScheduleId")
-                        .IsRequired()
-                        .HasConstraintName("seat_scheduleFK");
                     b.HasOne("Ticket_Train.Models.Train", "Train")
                         .WithMany("Seats")
                         .HasForeignKey("TrainId")
                         .IsRequired()
                         .HasConstraintName("seat_trainFK");
-                    b.Navigation("Schedule");
+
                     b.Navigation("Train");
                 });
 

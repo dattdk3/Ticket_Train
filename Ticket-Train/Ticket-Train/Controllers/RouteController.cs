@@ -5,6 +5,7 @@ using Ticket_Train.Models;
 
 namespace Ticket_Train.Controllers
 {
+    [RoleAuthorize(1)] // Chỉ cho phép người dùng có Role 
     public class RouteController : Controller
     {
         private readonly IUnitOfWork _routeRepository;
@@ -38,8 +39,6 @@ namespace Ticket_Train.Controllers
             var route = await _routeRepository.Routes.GetByIdAsync(id);
             return Ok(new { success = true, data = route });
         }
-
-
         [HttpPut]
         public async Task<IActionResult> EditRoute([FromBody] Routes data)
         {

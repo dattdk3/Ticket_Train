@@ -101,10 +101,68 @@
         sessionStorage.setItem('totalPrice', document.getElementById('totalPrice').textContent);
 
         // Redirect to booking information page
-        window.location.href = 'booking-info.html';
+        window.location.href = '/Payment/BookingInfo';
     });
 
     // Initialize the page
     createSeatGrid();
     createSleeperCompartments();
-});
+}); 
+
+
+function renderSeats(seatsData) {
+    const container = document.getElementById('seats-container');
+    container.innerHTML = '';
+    seatsData.forEach((seat , index) => {
+        console.log(seat);
+        const seatDiv = document.createElement('div');
+        seatDiv.className = 'seat';
+        seatDiv.dataset.seatId = seat.seatId;
+        seatDiv.innerText = `Seat ${index}`;
+        seatDiv.classList.add(!seat.status ? 'available' : 'booked');
+        seatDiv.style.backgroundColor = !seat.status ? '#ADD8E6' : '#FFC0CB';
+        seatDiv.title = `Price: $${seat.price}\nStatus: ${!seat.status ? 'Available' : 'Booked'}`;
+        seatDiv.onclick = function () {
+            const confirmPurchase = confirm(
+                `Seat ${index}\n` +
+                `Price: $${seat.price}\n` +
+                `Status: ${!seat.status ? 'Available' : 'Booked'}\n\n` +
+                `Do you want to proceed?`
+            );
+            if (confirmPurchase) {
+                $.ajax({
+                    url: '/confirm-seat-purchase',
+                    type: 'POST',
+                    data: { seatId: seat.seatId },
+                    success: function (response) {
+                        alert('Seat successfully reserved!');
+                        handleSeatClick(seat.seatId);
+                    },
+                    error: function (error) {
+                        console.error('Error confirming seat:', error);
+                    }
+                });
+            }
+        };
+
+        container.appendChild(seatDiv);
+    });
+}
+
+
+function handleTrainClick(trainID) {
+
+    var trainid = Number(trainID);
+    $.ajax({
+        type: 'GET',
+        url: `/TicketSearch/GetAllSeatInTrain/?trainid=` + trainid,
+        success: function (response) {
+            if (response.success) {
+                renderSeats(response.data)
+            }
+        },
+        error: function (xhr) {
+            alert(xhr.responseJSON.message);
+        }
+    });
+}

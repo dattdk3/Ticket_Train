@@ -30,6 +30,7 @@ builder.Services.AddScoped<IUserRepository, UserRespository>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
 builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
 
+builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddControllersWithViews();
