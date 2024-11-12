@@ -13,7 +13,7 @@ namespace Ticket_Train.Core.Repository
 
         public async Task<List<Train>> GetListTrain(int pageIndex = 1, int pageSize = 10)
         {
-            var query = _context.Trains.AsQueryable();
+            var query = _context.Trains.Where(o=> o.IsActive == true || o.IsActive == null).AsQueryable();
             var paginatedList = await PaginatedList<Train>.CreateAsync(query, pageIndex, pageSize);
             return paginatedList;
         }

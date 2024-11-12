@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\image\\icon_account.png",
+      "PackagePath": "staticwebassets\\image\\icon_account.png"
+    },
+    {
       "Id": "E:\\WEB\\TicketTrain\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\Auth.js",
       "PackagePath": "staticwebassets\\js\\Auth.js"
     },

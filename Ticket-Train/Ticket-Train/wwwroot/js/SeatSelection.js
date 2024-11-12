@@ -1,4 +1,6 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿
+
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize variables
     let selectedSeats = new Set();
     const pricePerSeat = 995000; // Price in VND
@@ -107,13 +109,13 @@
     // Initialize the page
     createSeatGrid();
     createSleeperCompartments();
-}); 
+});
 
 
 function renderSeats(seatsData) {
     const container = document.getElementById('seats-container');
     container.innerHTML = '';
-    seatsData.forEach((seat , index) => {
+    seatsData.forEach((seat, index) => {
         console.log(seat);
         const seatDiv = document.createElement('div');
         seatDiv.className = 'seat';

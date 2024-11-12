@@ -13,9 +13,9 @@ namespace Ticket_Train.Controllers
             _trainRepository = train;
         }
 
-        public async Task<IActionResult> SeatSelection()
+        public async Task<IActionResult> SeatSelection(int pageIndex = 1, int pageSize = 2)
         {
-            var trainlist = await _trainRepository.Trains.GetAllAsync();
+            var trainlist = await _trainRepository.Trains.GetListTrain(pageIndex, pageSize);
             return View(trainlist);
         }
 
