@@ -1,4 +1,4 @@
-console.log("loggggggggggggggggggggg");
+﻿console.log("loggggggggggggggggggggg");
 $(document).ready(function () {
     $('#trainformSubmit').on('submit', function (e) {
         e.preventDefault();

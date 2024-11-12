@@ -174,6 +174,7 @@ namespace Ticket_Train.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("price");
+
                     b.Property<bool>("Status")
                         .HasMaxLength(20)
                         .HasColumnType("bit")
@@ -184,6 +185,7 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     b.HasKey("SeatId");
+
                     b.HasIndex("TrainId");
 
                     b.ToTable("seats", (string)null);
@@ -327,17 +329,12 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Seat", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
-                        .WithMany()
-                        .HasForeignKey("ScheduleId")
-                        .IsRequired()
-                        .HasConstraintName("seat_scheduleFK");
                     b.HasOne("Ticket_Train.Models.Train", "Train")
                         .WithMany("Seats")
                         .HasForeignKey("TrainId")
                         .IsRequired()
                         .HasConstraintName("seat_trainFK");
-                    b.Navigation("Schedule");
+
                     b.Navigation("Train");
                 });
 

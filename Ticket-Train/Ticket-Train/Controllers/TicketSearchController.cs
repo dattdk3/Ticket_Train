@@ -18,7 +18,6 @@ namespace Ticket_Train.Controllers
             var trainlist = await _trainRepository.Trains.GetListTrain(pageIndex, pageSize);
             return View(trainlist);
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllSeatInTrain(int trainid)
         {

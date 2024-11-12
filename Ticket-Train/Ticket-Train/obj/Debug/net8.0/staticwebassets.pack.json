@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\js\\admin\\Train.js"
     },
     {
+      "Id": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\TrainNew.js",
+      "PackagePath": "staticwebassets\\js\\admin\\TrainNew.js"
+    },
+    {
       "Id": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

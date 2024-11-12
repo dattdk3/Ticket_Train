@@ -17,20 +17,16 @@ namespace Ticket_Train.Controllers
     public class TrainController : Controller
     {
         private readonly IUnitOfWork _trainRepository;
-        private readonly IUnitOfWork _newRepository;
-        public TrainController(IUnitOfWork train, IUnitOfWork newRepository)
+        public TrainController(IUnitOfWork train)
         {
             _trainRepository = train;
-            _newRepository = newRepository;
         }
-        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 2)
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 10)
         {
-            int totalcount = 0;
             var trains = await _trainRepository.Trains.GetListTrain(pageIndex , pageSize);
             int count = trains.Count;
             return View(trains);
         }
-
         public IActionResult TrainAdd()
         {
             return View();
@@ -46,9 +42,6 @@ namespace Ticket_Train.Controllers
             {
                 item.TrainId = id;
                 if(item.Price > 0) await _trainRepository.Seats.AddAsync(item);
-                item.TrainId = id;
-                item.Status = false;
-                if (item.Price > 0) await _trainRepository.Seats.AddAsync(item);
             }
             await _trainRepository.SaveAsync();
 

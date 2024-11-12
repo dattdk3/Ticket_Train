@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "D8TGl9fm6YSLQtJzYYjn1Q/pzw4yl1N+3iTd+W3I99s=",
+  "Hash": "MYZmMgnVfNk1I7nnI39wdpNB1xBMqOfxFiptilps7mA=",
   "Source": "Ticket-Train",
   "BasePath": "_content/Ticket-Train",
   "Mode": "Default",
@@ -1440,6 +1440,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\admin\\Train.js"
+    },
+    {
+      "Identity": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\admin\\TrainNew.js",
+      "SourceId": "Ticket-Train",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\",
+      "BasePath": "_content/Ticket-Train",
+      "RelativePath": "js/admin/TrainNew.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin\\TrainNew.js"
     },
     {
       "Identity": "D:\\video\\Ticket_Train\\Ticket-Train\\Ticket-Train\\wwwroot\\js\\Auth.js",

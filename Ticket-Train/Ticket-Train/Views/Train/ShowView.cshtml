@@ -8,7 +8,7 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="~/js/admin/Train.js"></script>
+    <script src="~/js/admin/TrainNew.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Ensure the page can scroll */
@@ -55,7 +55,7 @@
             <div class="col-md-6">
                 <div class="form-container">
                     <h3 class="text-center mb-4">Thêm Mới Tàu</h3>
-                    <form id="trainform" method="post">
+                    <form id="trainformSubmit" method="post">
                         <div class="form-group">
                             <label for="TrainName">Tên Tàu <span style="color: red;">*</span></label>
                             <input name="TrainName" id="TrainName" type="text" class="form-control" placeholder="Nhập tên tàu" required>
@@ -158,4 +158,6 @@
             });
         });
     });
+
+
 </script>
