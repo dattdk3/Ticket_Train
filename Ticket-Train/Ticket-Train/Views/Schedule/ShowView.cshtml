@@ -1,0 +1,98 @@
+﻿@model List<Ticket_Train.Models.Schedule>
+@{
+    ViewData["Title"] = "Schedule Management";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/admin/Schedule.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Thêm Mới Lịch Trình</h3>
+                <form id="scheduleForm" method="post">
+                    <div class="form-group">
+                        <label for="TrainId">Mã Tàu <span style="color: red;">*</span></label>
+                        <input name="TrainId" id="TrainId" type="number" class="form-control" placeholder="Nhập mã tàu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="RouteId">Mã Tuyến Đường <span style="color: red;">*</span></label>
+                        <input name="RouteId" id="RouteId" type="number" class="form-control" placeholder="Nhập mã tuyến đường" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="DepartureTime">Thời Gian Khởi Hành <span style="color: red;">*</span></label>
+                        <input name="DepartureTime" id="DepartureTime" type="datetime-local" class="form-control" required>
+                    </div>
+                    <button class="btn btn-primary auth-btn" id="btnAdd" type="submit">Thêm mới</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-container">
+                <h3 class="text-center mb-4">Cập Nhật Lịch Trình</h3>
+                <form id="updateScheduleForm" method="post">
+                    <div class="form-group">
+                        <input name="ScheduleId" id="ScheduleId" type="hidden" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateTrainId">Mã Tàu <span style="color: red;">*</span></label>
+                        <input name="UpdateTrainId" id="UpdateTrainId" type="number" class="form-control" placeholder="Nhập mã tàu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateRouteId">Mã Tuyến Đường <span style="color: red;">*</span></label>
+                        <input name="UpdateRouteId" id="UpdateRouteId" type="number" class="form-control" placeholder="Nhập mã tuyến đường" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateDepartureTime">Thời Gian Khởi Hành Mới</label>
+                        <input name="UpdateDepartureTime" id="UpdateDepartureTime" type="datetime-local" class="form-control">
+                    </div>
+                    <button class="btn btn-success auth-btn" id="btnUpdate" type="submit">Cập nhật</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Danh Sách Lịch Trình</h3>
+    <table class="table table-bordered" id="table">
+        <thead class="thead-light">
+            <tr>
+                <th>ScheduleId</th>
+                <th>Mã Tàu</th>
+                <th>Mã Tuyến Đường</th>
+                <th>Thời Gian Khởi Hành</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in Model)
+            {
+                <tr>
+                    <td>@schedule.ScheduleId</td>
+                    <td>@schedule.TrainId</td>
+                    <td>@schedule.RouteId</td>
+                    <td>@schedule.DepartureTime</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editSchedule(@schedule.ScheduleId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteSchedule(@schedule.ScheduleId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

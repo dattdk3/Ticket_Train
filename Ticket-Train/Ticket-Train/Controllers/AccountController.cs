@@ -38,8 +38,27 @@ namespace Ticket_Train.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] User loginModel)
         {
+
             User user = await _unitOfWork.user.Authentication(loginModel.Email, loginModel.Password);
-            return user == null ? Ok(new { success = false, message = "Đăng nhập không thành công." }) : Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name });
+            if (user == null)
+            {
+                return Ok(new { success = false, message = "Đăng nhập không thành công." });
+            }
+
+            // Lưu tên người dùng vào session
+            HttpContext.Session.SetString("UserName", user.Name);
+            HttpContext.Session.SetInt32("UserRole", user.Role);
+
+            return Ok(new { success = true, message = "Đăng nhập thành công.", userName = user.Name, role = user.Role });
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Clear session data
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult AccessDenied()
+        {
+            return View(); // Tạo trang AccessDenied.cshtml để hiển thị thông báo
         }
     }
 }

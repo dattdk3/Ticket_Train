@@ -18,7 +18,7 @@ namespace Ticket_Train.Models
 
         public virtual DbSet<Passenger> Passengers { get; set; } = null!;
         public virtual DbSet<Reservation> Reservations { get; set; } = null!;
-        public virtual DbSet<Route> Routes { get; set; } = null!;
+        public virtual DbSet<Routes> Routes { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<Station> Stations { get; set; } = null!;
         public virtual DbSet<Train> Trains { get; set; } = null!;
@@ -91,7 +91,7 @@ namespace Ticket_Train.Models
                     .HasConstraintName("reservation_scheduleFK");
             });
 
-            modelBuilder.Entity<Route>(entity =>
+            modelBuilder.Entity<Routes>(entity =>
             {
                 entity.ToTable("routes");
                 entity.HasKey(o => o.RouteId);
@@ -192,14 +192,9 @@ namespace Ticket_Train.Models
 
                 entity.Property(e => e.TrainId).HasColumnName("train_id");
 
-
-                entity.Property(e => e.ScheduleId).HasColumnName("schedule_id");
-
                 entity.Property(e => e.Price)
-                    .HasColumnType("decimal(18, 2)")  // Định dạng kiểu dữ liệu decimal cho giá vé
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("price");
-
-                // Thiết lập quan hệ
                 entity.HasOne(d => d.Train)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.TrainId)
@@ -207,11 +202,6 @@ namespace Ticket_Train.Models
                     .HasConstraintName("seat_trainFK");
 
 
-                entity.HasOne(d => d.Schedule)
-                    .WithMany()
-                    .HasForeignKey(d => d.ScheduleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("seat_scheduleFK");
             });
 
             modelBuilder.Entity<User>(entity =>

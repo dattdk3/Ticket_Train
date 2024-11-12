@@ -62,26 +62,17 @@
                     <input type="date" id="returnDate">
                 </div>
 
-                <button type="submit" class="search-btn">Tìm Kiếm</button>
+                <button type="submit" class="search-btn"><a asp-area="" asp-controller="TicketSearch" asp-action="SeatSelection">Tìm Kiếm</a></button>
             </form>
         </div>
 
         <div id="searchResults" class="search-results hidden">
-            <!-- Results will be populated by JavaScript -->
+          
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Thông tin liên hệ</h3>
-                <p>Email: support@vetauonline.vn</p>
+   
 
-                <p>Hotline: 1900 xxxx</p>
-            </div>ø
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="~/js/Script.js"></script>
 </body>
 </html>

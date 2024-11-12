@@ -45,7 +45,12 @@ $(document).ready(function () {
                 console.log("respond" + response);
                 if (response.success) {
                     alert(response.message);
-                    window.location.href = '/home/index';
+                    // Kiểm tra role và điều hướng
+                    if (response.role === 1) {
+                        window.location.href = '/train/showview';
+                    } else if (response.role === 2) {
+                        window.location.href = '/home/index';
+                    }
                 } else {
                     alert(response.message);
                 }
