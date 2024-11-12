@@ -1,0 +1,105 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quản lý chi tiêu </title>
+    <link rel="stylesheet" href="/css/admin/layoutAdmin.css">
+
+
+    <style>
+      
+    </style>
+</head>
+
+<body onload="getSpending()">
+    <div class="fix">
+        <header class="header">
+            <div class="title">
+                <p>TRAIN.VN</p>
+            </div>
+            <div class="taikhoan">
+                @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
+                {
+                    <div class="d-flex align-items-center">
+                        <li class="nav-item">
+                            <span class="nav-link text-dark">Hello, @HttpContextAccessor.HttpContext.Session.GetString("UserName")</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Account/Logout">Logout</a>
+                        </li>
+                    </div>
+                }
+               @*  <button class="account" ">
+                    <a href=""><img class="img-acc" src="/image/icon_account.png" /></a>
+                </button> *@
+                <div>
+                    <h6 id="acount_name"></h6>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Fomat-side  -->
+        <div class="container_body">
+
+            <div class="col_left">
+                <ul class="sidebar">
+                    <li class="list-item">
+                        <a href="/Schedule/ShowView">
+                            Manage
+                            Schedule
+                        </a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/Train/ShowView">Manage Train</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/Station/ShowView">Manage Station</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/Route/ShowView">Manage Route</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/Seat/ShowView">Manage Seat</a>
+                    </li>
+                    <li id="mg_User_btn" class="list-item">
+                        <a href="/User/ShowView">Manage User</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col_right">
+                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                <div class="first_row">
+                    <div class="title_r">
+                        <h1>Manage Schedule</h1>
+                    </div>
+
+                  
+                </div>
+
+                <div class="second_row">
+                   
+                    @RenderBody()
+
+                    <!-- Pagination buttons -->
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <footer class="container_footer"></footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

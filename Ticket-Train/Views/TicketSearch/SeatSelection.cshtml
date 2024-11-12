@@ -1,0 +1,205 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Chỗ Ngồi - Đặt Vé Tàu</title>
+    <link rel="stylesheet" href="~/css/SeatSelection.css">
+
+    <style>
+        .container_show {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            position: relative;
+        }
+
+        .seating-section {
+            grid-column-start: 1;
+            grid-column-end: 8;
+        }
+
+        .cart-container {
+            width: 400px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            grid-column-start: 9;
+            grid-column-end: 13;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        /* Định dạng danh sách vé */
+        .ticket-list {
+            margin: 20px 0;
+        }
+
+        .ticket-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .ticket-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+            .ticket-info div {
+                font-size: 14px;
+                color: #333;
+            }
+
+            .ticket-info .field {
+                font-weight: bold;
+            }
+        /* Định dạng phần tổng tiền */
+        .total-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .total-price {
+            color: #28a745;
+        }
+        /* Định dạng nút mua vé */
+        .checkout-button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .checkout-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">VeTauTrucTuyen.vn</div>
+            <ul class="nav-links">
+                <li><a href="#">Đặt vé tàu</a></li>
+                <li><a href="#">Câu hỏi</a></li>
+                <li><a href="#">Cẩm nang đi tàu</a></li>
+                <li><a href="#">Khuyến mãi</a></li>
+                <li><a href="#">Vé tàu Tết</a></li>
+                <li><a href="#">Vé đoàn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="journey-info">
+            <h2>Chiều đi: ngày 12/11/2024 từ Sài Gòn đến Hà Nội</h2>
+        </div>
+
+        <div class="train-schedule">
+            <div class="train-item active" id="SE8">
+                <div class="train-details">
+                    <p>TG đi: 12/11/2024 06:00</p>
+                    <p>TG đến: 13/11/2024 19:12</p>
+                </div>
+            </div>
+            <!-- Add other trains (SE6, SE4, SE2) similarly -->
+        </div>
+        <div class="container_show">
+
+
+            <div class="seating-section">
+                <h3>Ngồi mềm (SE8 - TG đi 12/11/2024 06:00)</h3>
+                <div class="seating-layout">
+                    <div class="seats-grid">
+                        <!-- First class seats -->
+                        <div class="seat-row">
+                            <div class="seat" data-seat="1">A1</div>
+                            <div class="seat" data-seat="8">A2</div>
+                            <div class="seat" data-seat="9">A5</div>
+                            <div class="seat" data-seat="1">A6</div>
+                            <div class="seat" data-seat="8">A9</div>
+                            <div class="seat" data-seat="9">A0</div>
+                            <!-- Add all seats up to 64 -->
+                        </div>
+                        <!-- Continue with other rows -->
+                    </div>
+                </div>
+
+                <div class="seat-info">
+                    <div class="seat-types">
+                        <div class="seat-type">
+                            <div class="seat available"></div>
+                            <span>Ghế trống</span>
+                        </div>
+                        <div class="seat-type">
+                            <div class="seat selected"></div>
+                            <span>Ghế đang chọn</span>
+                        </div>
+                        <div class="seat-type">
+                            <div class="seat occupied"></div>
+                            <span>Ghế đã bán</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-container">
+                <h2>Giỏ Vé Tàu Hỏa</h2>
+                <div class="ticket-list">
+                    <!-- Vé 1 -->
+                    <div class="ticket-item">
+                        <div class="ticket-info">
+                            <div><span class="field">Tên tàu:</span> SE1</div>
+                            <div><span class="field">Chuyến:</span> Hà Nội - Hải Phòng</div>
+                            <div><span class="field">Thời gian:</span> 08:00 - 10:30</div>
+                            <div><span class="field">Chỗ ngồi:</span> A1-12</div>
+                        </div>
+                    </div>
+                    <!-- Vé 2 -->
+                    <div class="ticket-item">
+                        <div class="ticket-info">
+                            <div><span class="field">Tên tàu:</span> SE2</div>
+                            <div><span class="field">Chuyến:</span> Hà Nội - Hải Phòng</div>
+                            <div><span class="field">Thời gian:</span> 14:00 - 16:30</div>
+                            <div><span class="field">Chỗ ngồi:</span> B2-15</div>
+                        </div>
+                    </div>
+                    <!-- Vé 3 -->
+                    <div class="ticket-item">
+                        <div class="ticket-info">
+                            <div><span class="field">Tên tàu:</span> SE3</div>
+                            <div><span class="field">Chuyến:</span> Hà Nội - Hải Phòng</div>
+                            <div><span class="field">Thời gian:</span> 18:00 - 20:30</div>
+                            <div><span class="field">Chỗ ngồi:</span> C3-08</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-container">
+                    <span>Tổng cộng:</span>
+                    <span class="total-price">750.000 VND</span>
+                </div>
+                <button class="checkout-button"><a href="/Payment/Bookinginfo">Mua vé</a></button>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    <script src="~/js/SeatSelection.js"></script>
+</body>
+</html>

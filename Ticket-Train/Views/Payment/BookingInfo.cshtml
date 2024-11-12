@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin đặt vé</title>
+    <link rel="stylesheet" href="~/css/Style.css"> <!-- Liên kết đến file CSS -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .booking-info {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .ticket-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .ticket-table th,
+        .ticket-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .ticket-table th {
+            background-color: #2171c1;
+            color: white;
+        }
+
+        .ticket-table input[type="text"],
+        .ticket-table input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .seat-info p {
+            margin: 0;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #e63946;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            color: #dc2f3d;
+        }
+
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: #2171c1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 1rem auto;
+        }
+
+        button:hover {
+            background-color: #1a5b8e;
+        }
+
+        .summary-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" style="text-align: center; padding: 20px; background-color: #2171c1; color: white; font-size: 24px;">Đặt Vé Tàu</div>
+    </header>
+    
+    <main>
+        <h2>Thông tin đặt vé</h2>
+
+        <div class="form-container">
+            <div>
+                <label for="customerName">Họ và tên:</label>
+                <input type="text" id="customerName" required>
+            </div>
+            <div>
+                <label for="customerEmail">Email:</label>
+                <input type="email" id="customerEmail" required>
+            </div>
+            <div>
+                <label for="customerPhone">Số điện thoại:</label>
+                <input type="tel" id="customerPhone" required>
+            </div>
+            <div>
+                <label for="paymentMethod">Phương thức thanh toán:</label>
+                <select id="paymentMethod" required>
+                    <option value="" disabled selected>Chọn phương thức</option>
+                    <option value="credit-card">Thẻ tín dụng</option>
+                    <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                    <option value="cash">Tiền mặt</option>
+                </select>
+            </div>
+
+            <button id="confirmPayment"><a href="/Payment/Confirm">Thanh Toán</a></button>
+        </div>
+
+        <div id="summary" class="summary-info">
+            <h3>Tổng số ghế đã chọn:</h3>
+            <p id="selectedSeatsDisplay"></p>
+            <div class="booking-info">
+                <table class="ticket-table">
+                    <thead>
+                        <tr>
+                            <th>Chỗ ngồi</th>
+                            <th>Họ tên</th>
+                            <th>Thông tin chỗ</th>
+                            <th>Giá vé</th>
+                            <th>Giảm đối tượng</th>
+                            <th>Khuyến mại</th>
+                            <th>Bảo hiểm</th>
+                            <th>Thành tiền (VND)</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ghế sẽ được thêm vào ở đây -->
+                         <!-- Repeat this block for each selected seat -->
+                        <tr>
+                        <td>22</td>
+                        <td><input type="text" placeholder="Họ tên"></td>
+                        <td>
+                            <div class="seat-info">
+                                <p>Giữ trong 337 giây</p>
+                                <p>HP1 Hà Nội - Hải Phòng</p>
+                                <p>05/11/2024 06:00</p>
+                                <p>Toa 1 chỗ 22</p>
+                            </div>
+                        </td>
+                        <td>104,000</td>
+                        <td><input type="number" value="0" min="0"></td>
+                        <td>Không có khuyến mại cho vé này</td>
+                        <td>1,000</td>
+                        <td>105,000</td>
+                        <td><button class="delete-btn">🗑️</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                         <!-- Repeat this block for each selected seat -->
+                        <tr>
+                        <td>22</td>
+                        <td><input type="text" placeholder="Họ tên"></td>
+                        <td>
+                            <div class="seat-info">
+                                <p>Giữ trong 337 giây</p>
+                                <p>HP1 Hà Nội - Hải Phòng</p>
+                                <p>05/11/2024 06:00</p>
+                                <p>Toa 1 chỗ 22</p>
+                            </div>
+                        </td>
+                        <td>104,000</td>
+                        <td><input type="number" value="0" min="0"></td>
+                        <td>Không có khuyến mại cho vé này</td>
+                        <td>1,000</td>
+                        <td>105,000</td>
+                        <td><button class="delete-btn">🗑️</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Tổng giá trị:</h3>
+            <p id="totalPrice"></p>
+        </div>
+    </main>
+
+    <script>
+        // Lưu thông tin ghế vào sessionStorage
+        let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats')) || [];
+        selectedSeats.push({
+            seatId: "seat1",
+            seatInfo: "Toa 1, Chỗ 22", 
+            price: 104000,
+            discount: 0,
+            promotion: "Không có khuyến mại",
+            insurance: 1000,
+            totalPrice: 104000 + 1000
+        });
+        sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy thông tin ghế và tổng giá trị từ sessionStorage
+            const selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats')) || [];
+            const totalPrice = calculateTotalPrice(selectedSeats);
+
+            // Hiển thị thông tin ghế và tổng giá trị
+            document.getElementById('selectedSeatsDisplay').textContent = selectedSeats.length > 0 ? selectedSeats.map(seat => seat.seatInfo).join(', ') : 'Chưa chọn ghế';
+            document.getElementById('totalPrice').textContent = totalPrice;
+
+            // Hiển thị thông tin ghế trong bảng
+            const ticketTableBody = document.querySelector('.ticket-table tbody');
+            ticketTableBody.innerHTML = ''; // Xóa các dòng ghế cũ trước khi hiển thị lại
+            selectedSeats.forEach((seat, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${seat.seatId}</td>
+                    <td><input type="text" placeholder="Họ tên" id="customerName_${index}" required></td>
+                    <td>
+                        <div class="seat-info">
+                            <p>Giữ trong 337 giây</p>
+                            <p>${seat.seatInfo}</p>
+                            <p>Ngày: 05/11/2024</p>
+                            <p>Thông tin: ${seat.seatInfo}</p>
+                        </div>
+                    </td>
+                    <td>${seat.price.toLocaleString()} VND</td>
+                    <td><input type="number" value="${seat.discount}" min="0" id="discount_${index}"></td>
+                    <td>${seat.promotion}</td>
+                    <td>${seat.insurance.toLocaleString()} VND</td>
+                    <td>${seat.totalPrice.toLocaleString()} VND</td>
+                    <td><button class="delete-btn" data-index="${index}">🗑️</button></td>
+                `;
+                ticketTableBody.appendChild(row);
+            });
+
+            // Xử lý sự kiện nhấn nút "Thanh toán"
+            document.getElementById('confirmPayment').addEventListener('click', function() {
+                const name = document.getElementById('customerName').value;
+                const email = document.getElementById('customerEmail').value;
+                const phone = document.getElementById('customerPhone').value;
+                const paymentMethod = document.getElementById('paymentMethod').value;
+
+                if (!name || !email || !phone || !paymentMethod) {
+                    alert('Vui lòng điền đầy đủ thông tin!');
+                    return;
+                }
+
+                // Giả lập xử lý thanh toán
+                alert(`Thanh toán thành công!\nTên: ${name}\nEmail: ${email}\nSố điện thoại: ${phone}\nPhương thức: ${paymentMethod}\nTổng số ghế: ${selectedSeats.length}\nTổng giá trị: ${totalPrice}`);
+
+                // Chuyển sang trang thanh toán hoặc trang khác sau khi thanh toán
+            });
+
+            // Xử lý sự kiện nhấn nút xóa ghế
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = button.getAttribute('data-index');
+                    selectedSeats.splice(index, 1); // Xóa ghế khỏi danh sách
+                    sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+                    window.location.reload(); // Tải lại trang để cập nhật danh sách ghế
+                });
+            });
+        });
+
+        function calculateTotalPrice(seats) {
+            return seats.reduce((total, seat) => total + seat.totalPrice, 0).toLocaleString();
+        }
+    </script>
+</body>
+</html>

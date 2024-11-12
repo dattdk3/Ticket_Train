@@ -1,0 +1,80 @@
+﻿
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tiem_train {
+    width: 28%;
+    height: auto ;
+    border: 2px solid #d4d5d6;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 3px;
+}
+.card {
+    border-radius: 20px;
+
+}
+
+
+@media only screen and (max-width: 1520px) {
+    /* Các CSS cho thiết bị màn hình nhỏ */
+  
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    .tiem_train {
+        width: 28%;
+        height: auto;
+        border: 2px solid #d4d5d6;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 3px;
+    }
+}
+/* ipad */
+@media only screen and (max-width: 1320px) {
+    /* Các CSS cho thiết bị màn hình nhỏ */
+
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .tiem_train {
+        width: 36%;
+        height: auto;
+        border: 2px solid #d4d5d6;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 3px;
+    }
+}
+/* android */
+  
+@media only screen and (max-width: 768px) {
+    /* Các CSS cho thiết bị màn hình nhỏ */
+    .form-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tiem_train {
+        width: 90%;
+        height: auto;
+        border: 2px solid #d4d5d6;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 3px;
+    }
+}

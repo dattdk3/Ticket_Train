@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Vé Tàu Online</title>
+    <link rel="stylesheet" href="~/css/Style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VeTauOnline</div>
+            <ul class="nav-links">
+                <li><a href="#">Đặt vé tàu</a></li>
+                <li><a href="#">Câu hỏi</a></li>
+                <li><a href="#">Cẩm nang đi tàu</a></li>
+                <li><a href="#">Khuyến mãi</a></li>
+                <li><a href="#">Vé tàu Tết</a></li>
+                <li><a href="#">Vé đoàn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <h2>TÌM KIẾM VÉ TÀU</h2>
+            <form id="ticketSearchForm">
+                <div class="form-group">
+                    <label for="departure">Ga đi:</label>
+                    <select id="departure" required>
+                        <option value="saigon">Sài Gòn</option>
+                        <option value="hanoi">Hà Nội</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="arrival">Ga đến:</label>
+                    <select id="arrival" required>
+                        <option value="hanoi">Hà Nội</option>
+                        <option value="saigon">Sài Gòn</option>
+                    </select>
+                </div>
+
+                <div class="trip-type">
+                    <input type="radio" id="oneWay" name="tripType" value="oneWay" checked>
+                    <label for="oneWay">Một chiều</label>
+                    <input type="radio" id="roundTrip" name="tripType" value="roundTrip">
+                    <label for="roundTrip">Khứ hồi</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="departDate">Ngày đi:</label>
+                    <input type="date" id="departDate" required>
+                </div>
+
+                <div class="form-group return-date hidden">
+                    <label for="returnDate">Ngày về:</label>
+                    <input type="date" id="returnDate">
+                </div>
+
+                <button type="submit" class="search-btn"><a asp-area="" asp-controller="TicketSearch" asp-action="SeatSelection">Tìm Kiếm</a></button>
+            </form>
+        </div>
+
+        <div id="searchResults" class="search-results hidden">
+          
+        </div>
+    </main>
+
+   
+
+    <script src="~/js/Script.js"></script>
+</body>
+</html>
