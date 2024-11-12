@@ -1,4 +1,5 @@
-﻿using Ticket_Train.Models;
+﻿using Ticket_Train.Core.Utilities;
+using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.IRepository
 {
@@ -6,6 +7,6 @@ namespace Ticket_Train.Core.IRepository
     {
         Task<Station> GetWithid(int id);
 
-        Task<List<Station>> GetListStation(int offset, int count , out int totalcount);
+        Task<List<Station>> GetListStation(int pageIndex = 1, int pageSize = 10);
     }
 }

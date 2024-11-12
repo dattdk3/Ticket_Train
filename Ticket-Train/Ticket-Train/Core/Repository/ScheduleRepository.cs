@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ticket_Train.Core.IRepository;
+using Ticket_Train.Core.Utilities;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
@@ -17,11 +18,11 @@ namespace Ticket_Train.Core.Repository
             return schedule;
         }
 
-        public Task<List<Schedule>> GetSchedules(int offset, int count, out int totalcount)
+        public async Task<List<Schedule>> GetSchedules(int pageIndex = 1, int pageSize = 10)
         {
-            totalcount = _context.Schedules.Count();
-            return _context.Schedules
-                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
+            var query = _context.Schedules.Where(o => o.IsActive == true || o.IsActive == null).AsQueryable();
+            var paginatedList = await PaginatedList<Schedule>.CreateAsync(query, pageIndex, pageSize);
+            return paginatedList;
         }
     }
 }

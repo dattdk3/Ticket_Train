@@ -23,7 +23,7 @@ namespace Ticket_Train.Controllers
             _trainRepository = train;
             _newRepository = newRepository;
         }
-        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 2)
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 4)
         {
             int totalcount = 0;
             var trains = await _trainRepository.Trains.GetListTrain(pageIndex , pageSize);

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Net.Sockets;
 using Ticket_Train.Core.IRepository;
+using Ticket_Train.Core.Utilities;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
@@ -11,14 +13,11 @@ namespace Ticket_Train.Core.Repository
         }
 
         // you can add more condition from here , t
-        public Task<List<Station>> GetListStation(int offset, int count, out int totalcount)
+        public async Task<List<Station>> GetListStation(int pageIndex = 1, int pageSize = 10)
         {
-            totalcount = _context.Stations.Count();
-            //return _context.Stations.
-            //                Skip(offset - 1).
-            //                Take(count).Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
-            return _context.Stations
-                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
+            var query = _context.Stations.Where(o => o.IsActive == true || o.IsActive == null).AsQueryable();
+            var paginatedList = await PaginatedList<Station>.CreateAsync(query, pageIndex, pageSize);
+            return paginatedList;
         }
 
 

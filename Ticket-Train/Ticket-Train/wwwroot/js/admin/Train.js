@@ -17,7 +17,8 @@ $(document).ready(function () {
         }
 
         const _train = {
-            Name: $('#TrainName').val()
+            Name: $('#TrainName').val(),
+            Description: $('#TrainDescription').val()
         }
 
         const data = {
@@ -50,7 +51,8 @@ $(document).ready(function () {
 
         var data = {
             TrainId: trainId,
-            Name: updatedName
+            Name: updatedName,
+            Description: updatedDescription
         }
         $.ajax({
             url: `/Train/EditTrain`,
@@ -80,6 +82,7 @@ function editTrain(trainId) {
 
             $('#TrainId').val(data.data.trainId);
             $('#UpdateTrainName').val(data.data.name);
+            $('#UpdateTrainDescription').val(data.data.description);
             $('#btnUpdate').prop('disabled', false);
         },
         error: function () {

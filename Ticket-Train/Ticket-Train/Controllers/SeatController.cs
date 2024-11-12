@@ -13,10 +13,10 @@ namespace Ticket_Train.Controllers
         {
             _seatRepository = seat;
         }
-        public async Task<IActionResult> ShowView()
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 4)
         {
             int totalcount = 0;
-            var seats = await _seatRepository.Seats.GetListSeats(10, 10, out totalcount);
+            var seats = await _seatRepository.Seats.GetListSeats(pageIndex, pageSize);
             int count = seats.Count;
             return View(seats);
         }

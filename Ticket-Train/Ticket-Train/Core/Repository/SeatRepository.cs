@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ticket_Train.Core.IRepository;
+using Ticket_Train.Core.Utilities;
 using Ticket_Train.Models;
 
 namespace Ticket_Train.Core.Repository
@@ -10,12 +11,11 @@ namespace Ticket_Train.Core.Repository
         {
         }
 
-        public Task<List<Seat>> GetListSeats(int offset, int count, out int totalcount)
+        public async Task<List<Seat>> GetListSeats(int pageIndex = 1, int pageSize = 10)
         {
-            totalcount = _context.Seats.Count();
-            
-            return _context.Seats
-                            .Where(o => o.IsActive == true || o.IsActive == null).ToListAsync();
+            var query = _context.Seats.Where(o => o.IsActive == true || o.IsActive == null).AsQueryable();
+            var paginatedList = await PaginatedList<Seat>.CreateAsync(query, pageIndex, pageSize);
+            return paginatedList;
         }
 
         public async Task<Seat> GetSeatById(int id)

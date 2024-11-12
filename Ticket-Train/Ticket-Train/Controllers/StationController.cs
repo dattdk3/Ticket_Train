@@ -16,10 +16,10 @@ namespace Ticket_Train.Controllers
         }
 
 
-        public async Task<IActionResult> ShowView()
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 4)
         {
             int totalcount = 0;
-            var stations = await _stationRepository.Stations.GetListStation(10, 10, out totalcount);
+            var stations = await _stationRepository.Stations.GetListStation(pageIndex, pageSize);
             int count = stations.Count;
             return View(stations);
         }

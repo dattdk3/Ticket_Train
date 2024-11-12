@@ -13,10 +13,10 @@ namespace Ticket_Train.Controllers
         {
             _routeRepository = route;
         }
-        public async Task<IActionResult> ShowView()
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 4)
         {
             int totalcount = 0;
-            var routes = await _routeRepository.Routes.GetRoutes(10, 10, out totalcount);
+            var routes = await _routeRepository.Routes.GetRoutes(pageIndex, pageSize);
             int count = routes.Count;
             return View(routes);
         }

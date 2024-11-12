@@ -1,4 +1,4 @@
-﻿@model List<Ticket_Train.Models.Seat>
+﻿@model Ticket_Train.Core.Utilities.PaginatedList<Seat>
 @{
     ViewData["Title"] = "Seat Management";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
@@ -126,4 +126,17 @@
             }
         </tbody>
     </table>
+    <div class="pagination">
+        @if (Model.HasPreviousPage())
+        {
+            <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex - 1)" asp-route-pageSize="@Model.Count">Previous</a>
+        }
+
+        <span>Page @Model.PageIndex of @Model.TotalPages</span>
+
+        @if (Model.HasNextPage())
+        {
+            <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex + 1)" asp-route-pageSize="@Model.Count">Next</a>
+        }
+    </div>
 </div>

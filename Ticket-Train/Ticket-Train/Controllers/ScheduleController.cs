@@ -13,10 +13,10 @@ namespace Ticket_Train.Controllers
         {
             _scheduleRepository = schedule;
         }
-        public async Task<IActionResult> ShowView()
+        public async Task<IActionResult> ShowView(int pageIndex = 1, int pageSize = 4)
         {
             int totalcount = 0;
-            var schedules = await _scheduleRepository.Schedules.GetSchedules(10, 10, out totalcount);
+            var schedules = await _scheduleRepository.Schedules.GetSchedules(pageIndex, pageSize);
             int count = schedules.Count;
             return View(schedules);
         }
