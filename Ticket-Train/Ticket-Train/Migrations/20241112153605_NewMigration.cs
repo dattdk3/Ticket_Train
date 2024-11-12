@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ticket_Train.Migrations
 {
-    public partial class AddMigration : Migration
+    public partial class NewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,8 @@ namespace Ticket_Train.Migrations
                     train_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: true)
+                    IsActive = table.Column<bool>(type: "bit", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,27 +95,6 @@ namespace Ticket_Train.Migrations
                         column: x => x.origin_id,
                         principalTable: "stations",
                         principalColumn: "station_id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "seats",
-                columns: table => new
-                {
-                    seat_id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    train_id = table.Column<int>(type: "int", nullable: false),
-                    status = table.Column<bool>(type: "bit", maxLength: 20, nullable: false),
-                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_seats", x => x.seat_id);
-                    table.ForeignKey(
-                        name: "seat_trainFK",
-                        column: x => x.train_id,
-                        principalTable: "train",
-                        principalColumn: "train_id");
                 });
 
             migrationBuilder.CreateTable(
@@ -168,6 +148,34 @@ namespace Ticket_Train.Migrations
                         principalColumn: "schedule_id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "seats",
+                columns: table => new
+                {
+                    seat_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    train_id = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<bool>(type: "bit", maxLength: 20, nullable: false),
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true),
+                    ScheduleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seats", x => x.seat_id);
+                    table.ForeignKey(
+                        name: "FK_seats_schedules_ScheduleId",
+                        column: x => x.ScheduleId,
+                        principalTable: "schedules",
+                        principalColumn: "schedule_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "seat_trainFK",
+                        column: x => x.train_id,
+                        principalTable: "train",
+                        principalColumn: "train_id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_reservations_passenger_id",
                 table: "reservations",
@@ -197,6 +205,11 @@ namespace Ticket_Train.Migrations
                 name: "IX_schedules_train_id",
                 table: "schedules",
                 column: "train_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seats_ScheduleId",
+                table: "seats",
+                column: "ScheduleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_seats_train_id",

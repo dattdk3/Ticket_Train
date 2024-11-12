@@ -174,6 +174,10 @@ namespace Ticket_Train.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("price");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasMaxLength(20)
                         .HasColumnType("bit")
@@ -184,6 +188,9 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     b.HasKey("SeatId");
+
+                    b.HasIndex("ScheduleId");
+
                     b.HasIndex("TrainId");
 
                     b.ToTable("seats", (string)null);
@@ -219,6 +226,10 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainId"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
@@ -330,14 +341,17 @@ namespace Ticket_Train.Migrations
                     b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
                         .WithMany()
                         .HasForeignKey("ScheduleId")
-                        .IsRequired()
-                        .HasConstraintName("seat_scheduleFK");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Ticket_Train.Models.Train", "Train")
                         .WithMany("Seats")
                         .HasForeignKey("TrainId")
                         .IsRequired()
                         .HasConstraintName("seat_trainFK");
+
                     b.Navigation("Schedule");
+
                     b.Navigation("Train");
                 });
 

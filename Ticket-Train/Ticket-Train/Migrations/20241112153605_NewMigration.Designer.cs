@@ -12,8 +12,8 @@ using Ticket_Train.Models;
 namespace Ticket_Train.Migrations
 {
     [DbContext(typeof(TicketsContext))]
-    [Migration("20241109141636_MigrationName")]
-    partial class MigrationName
+    [Migration("20241112153605_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,7 +95,7 @@ namespace Ticket_Train.Migrations
                     b.ToTable("reservations", (string)null);
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.Property<int>("RouteId")
                         .ValueGeneratedOnAdd()
@@ -178,13 +178,11 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("price");
 
                     b.Property<int>("ScheduleId")
-                        .HasColumnType("int")
-                        .HasColumnName("schedule_id");
+                        .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
+                    b.Property<bool>("Status")
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("bit")
                         .HasColumnName("status");
 
                     b.Property<int>("TrainId")
@@ -230,6 +228,10 @@ namespace Ticket_Train.Migrations
                         .HasColumnName("train_id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainId"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
@@ -300,7 +302,7 @@ namespace Ticket_Train.Migrations
                     b.Navigation("Schedule");
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.HasOne("Ticket_Train.Models.Station", "Destination")
                         .WithMany("RouteDestinations")
@@ -319,7 +321,7 @@ namespace Ticket_Train.Migrations
 
             modelBuilder.Entity("Ticket_Train.Models.Schedule", b =>
                 {
-                    b.HasOne("Ticket_Train.Models.Route", "Route")
+                    b.HasOne("Ticket_Train.Models.Routes", "Route")
                         .WithMany("Schedules")
                         .HasForeignKey("RouteId")
                         .IsRequired()
@@ -341,8 +343,8 @@ namespace Ticket_Train.Migrations
                     b.HasOne("Ticket_Train.Models.Schedule", "Schedule")
                         .WithMany()
                         .HasForeignKey("ScheduleId")
-                        .IsRequired()
-                        .HasConstraintName("seat_scheduleFK");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Ticket_Train.Models.Train", "Train")
                         .WithMany("Seats")
@@ -360,7 +362,7 @@ namespace Ticket_Train.Migrations
                     b.Navigation("Reservations");
                 });
 
-            modelBuilder.Entity("Ticket_Train.Models.Route", b =>
+            modelBuilder.Entity("Ticket_Train.Models.Routes", b =>
                 {
                     b.Navigation("Schedules");
                 });

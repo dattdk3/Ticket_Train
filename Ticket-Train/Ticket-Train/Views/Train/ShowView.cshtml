@@ -128,19 +128,19 @@
             </tbody>
         </table>
 
-        <div class="pagination">
-            @if (Model.HasPreviousPage())
-            {
-                <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex - 1)" asp-route-pageSize="@Model.Count">Previous</a>
-            }
+            <div class="pagination">
+                @if (Model.HasPreviousPage())
+                {
+                    <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex - 1)" asp-route-pageSize="@Model.Count">Previous</a>
+                }
 
-            <span>Page @Model.PageIndex of @Model.TotalPages</span>
+                <span>Page @Model.PageIndex of @Model.TotalPages</span>
 
-            @if (Model.HasNextPage())
-            {
-                <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex + 1)" asp-route-pageSize="@Model.Count">Next</a>
-            }
-        </div>
+                @if (Model.HasNextPage())
+                {
+                    <a asp-action="ShowView" asp-route-pageIndex="@(Model.PageIndex + 1)" asp-route-pageSize="@Model.Count">Next</a>
+                }
+            </div>
     </div>
 </body>
 </html>
@@ -158,4 +158,5 @@
             });
         });
     });
+
 </script>
